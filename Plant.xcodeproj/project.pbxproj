@@ -7,13 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7581ED6A29EABA4B0040425A /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6929EABA4B0040425A /* Shake.swift */; };
+		7581ED6C29EAC1350040425A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6B29EAC1350040425A /* Enums.swift */; };
+		7581ED6E29EAD6FE0040425A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6D29EAD6FE0040425A /* SettingsView.swift */; };
 		759F514329E4484D00FA3FE8 /* PlantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F514229E4484D00FA3FE8 /* PlantApp.swift */; };
-		759F514529E4484D00FA3FE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F514429E4484D00FA3FE8 /* ContentView.swift */; };
+		759F514529E4484D00FA3FE8 /* PlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F514429E4484D00FA3FE8 /* PlantView.swift */; };
 		759F514729E4484D00FA3FE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 759F514629E4484D00FA3FE8 /* Assets.xcassets */; };
 		759F514A29E4484D00FA3FE8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 759F514929E4484D00FA3FE8 /* Preview Assets.xcassets */; };
 		759F515429E4484D00FA3FE8 /* PlantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F515329E4484D00FA3FE8 /* PlantTests.swift */; };
 		759F515E29E4484E00FA3FE8 /* PlantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F515D29E4484E00FA3FE8 /* PlantUITests.swift */; };
 		759F516029E4484E00FA3FE8 /* PlantUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F515F29E4484E00FA3FE8 /* PlantUITestsLaunchTests.swift */; };
+		759F516D29E4488000FA3FE8 /* PlantVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F516C29E4488000FA3FE8 /* PlantVM.swift */; };
+		759F516F29E4489B00FA3FE8 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F516E29E4489B00FA3FE8 /* Branch.swift */; };
+		759F517129E448AE00FA3FE8 /* RadianCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F517029E448AE00FA3FE8 /* RadianCircle.swift */; };
+		759F517329E448BE00FA3FE8 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F517229E448BE00FA3FE8 /* MotionManager.swift */; };
+		759F517529E448D300FA3FE8 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F517429E448D300FA3FE8 /* BranchView.swift */; };
+		759F517929E448FC00FA3FE8 /* RadianTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F517829E448FC00FA3FE8 /* RadianTest.swift */; };
+		759F517B29E4491B00FA3FE8 /* EndPointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F517A29E4491B00FA3FE8 /* EndPointTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7581ED6929EABA4B0040425A /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
+		7581ED6B29EAC1350040425A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		7581ED6D29EAD6FE0040425A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		759F513F29E4484D00FA3FE8 /* Plant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		759F514229E4484D00FA3FE8 /* PlantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantApp.swift; sourceTree = "<group>"; };
-		759F514429E4484D00FA3FE8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		759F514429E4484D00FA3FE8 /* PlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantView.swift; sourceTree = "<group>"; };
 		759F514629E4484D00FA3FE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		759F514929E4484D00FA3FE8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		759F514F29E4484D00FA3FE8 /* PlantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +57,13 @@
 		759F515929E4484E00FA3FE8 /* PlantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		759F515D29E4484E00FA3FE8 /* PlantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantUITests.swift; sourceTree = "<group>"; };
 		759F515F29E4484E00FA3FE8 /* PlantUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		759F516C29E4488000FA3FE8 /* PlantVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantVM.swift; sourceTree = "<group>"; };
+		759F516E29E4489B00FA3FE8 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
+		759F517029E448AE00FA3FE8 /* RadianCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadianCircle.swift; sourceTree = "<group>"; };
+		759F517229E448BE00FA3FE8 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		759F517429E448D300FA3FE8 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
+		759F517829E448FC00FA3FE8 /* RadianTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadianTest.swift; sourceTree = "<group>"; };
+		759F517A29E4491B00FA3FE8 /* EndPointTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +114,14 @@
 		759F514129E4484D00FA3FE8 /* Plant */ = {
 			isa = PBXGroup;
 			children = (
-				759F514229E4484D00FA3FE8 /* PlantApp.swift */,
-				759F514429E4484D00FA3FE8 /* ContentView.swift */,
 				759F514629E4484D00FA3FE8 /* Assets.xcassets */,
+				759F514229E4484D00FA3FE8 /* PlantApp.swift */,
+				759F516C29E4488000FA3FE8 /* PlantVM.swift */,
+				759F514429E4484D00FA3FE8 /* PlantView.swift */,
+				7581ED6D29EAD6FE0040425A /* SettingsView.swift */,
+				7581ED6B29EAC1350040425A /* Enums.swift */,
+				759F517D29E4680300FA3FE8 /* Branch */,
+				759F517C29E467F700FA3FE8 /* Assistance */,
 				759F514829E4484D00FA3FE8 /* Preview Content */,
 			);
 			path = Plant;
@@ -114,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				759F515329E4484D00FA3FE8 /* PlantTests.swift */,
+				759F517829E448FC00FA3FE8 /* RadianTest.swift */,
+				759F517A29E4491B00FA3FE8 /* EndPointTest.swift */,
 			);
 			path = PlantTests;
 			sourceTree = "<group>";
@@ -125,6 +152,25 @@
 				759F515F29E4484E00FA3FE8 /* PlantUITestsLaunchTests.swift */,
 			);
 			path = PlantUITests;
+			sourceTree = "<group>";
+		};
+		759F517C29E467F700FA3FE8 /* Assistance */ = {
+			isa = PBXGroup;
+			children = (
+				759F517029E448AE00FA3FE8 /* RadianCircle.swift */,
+				759F517229E448BE00FA3FE8 /* MotionManager.swift */,
+				7581ED6929EABA4B0040425A /* Shake.swift */,
+			);
+			path = Assistance;
+			sourceTree = "<group>";
+		};
+		759F517D29E4680300FA3FE8 /* Branch */ = {
+			isa = PBXGroup;
+			children = (
+				759F516E29E4489B00FA3FE8 /* Branch.swift */,
+				759F517429E448D300FA3FE8 /* BranchView.swift */,
+			);
+			path = Branch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +303,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				759F514529E4484D00FA3FE8 /* ContentView.swift in Sources */,
+				759F514529E4484D00FA3FE8 /* PlantView.swift in Sources */,
+				759F517529E448D300FA3FE8 /* BranchView.swift in Sources */,
+				7581ED6A29EABA4B0040425A /* Shake.swift in Sources */,
+				759F517329E448BE00FA3FE8 /* MotionManager.swift in Sources */,
+				759F516F29E4489B00FA3FE8 /* Branch.swift in Sources */,
+				7581ED6E29EAD6FE0040425A /* SettingsView.swift in Sources */,
 				759F514329E4484D00FA3FE8 /* PlantApp.swift in Sources */,
+				759F517129E448AE00FA3FE8 /* RadianCircle.swift in Sources */,
+				7581ED6C29EAC1350040425A /* Enums.swift in Sources */,
+				759F516D29E4488000FA3FE8 /* PlantVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +320,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				759F517B29E4491B00FA3FE8 /* EndPointTest.swift in Sources */,
+				759F517929E448FC00FA3FE8 /* RadianTest.swift in Sources */,
 				759F515429E4484D00FA3FE8 /* PlantTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,9 @@ import SwiftUI
 struct PlantApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                PlantView()
+            }
         }
     }
 }
