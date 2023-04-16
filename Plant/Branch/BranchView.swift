@@ -16,13 +16,12 @@ struct BranchView: View {
     var body: some View {
         branch
             .trim(from: 0.0, to: pathProgress)
-            .stroke(.green, lineWidth: 2)
+            .stroke(branch.gradient, lineWidth: 2.5)
             .onAppear {
                 withAnimation(Animation.easeOut(duration: growTime)) {
                     pathProgress = 1
                 }
             }
-            
     }
 }
 

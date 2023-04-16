@@ -13,11 +13,13 @@ class PlantVM: ObservableObject {
 
     @Published public var showingSettings: Bool = false
 
-    @Published public var growTime: Double = 2
+    @Published public var growTime: Double = 1
     @Published public var newBranchTime: Double = 0.2
 
     @Published public var lengthControl: LengthControlEnum = .absolute
     @Published public var rotationControl: RotationControlEnum = .absolute
+
+    @Published public var startColor: HSB = .mock
 
     private let motionManager = MotionManager()
 
@@ -33,8 +35,8 @@ class PlantVM: ObservableObject {
 
     public func addTrunk() {
         let start = CGPoint(x: 0.5, y: 0)
-        let end = CGPoint(x: 0.5, y: 0.45)
-        let trunk = Branch(start: start, end: end, rotation: 0, trunkDistance: 0)
+        let end = CGPoint(x: 0.5, y: 0.2)
+        let trunk = Branch(start: start, end: end, startColor: startColor, rotation: 0, trunkDistance: 0)
         branches.append(trunk)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + growTime) {
@@ -48,7 +50,7 @@ class PlantVM: ObservableObject {
         if !showingSettings {
             let rotation = getRotation()
             let length = getLength()
-            
+
             if let growingBranch = getGrowingBranch(at: rotation) {
                 let newBranch = growingBranch.nextBranch(rotation: rotation, length: length)
                 branches.append(newBranch)
@@ -90,12 +92,11 @@ class PlantVM: ObservableObject {
     }
 
     private func getLength() -> CGFloat? {
-        guard let pitch = motionManager.pitch else { return 0 }
-
         switch lengthControl {
         case .absolute:
             return nil
         case .relative:
+            guard let pitch = motionManager.pitch else { return 0.2 }
             return (1.6 - abs(pitch)) / 15
         }
     }

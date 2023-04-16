@@ -7,18 +7,21 @@
 
 import SwiftUI
 
-struct Branch: Identifiable, Equatable, Shape {
+struct Branch: Identifiable, Shape {
     public let id: UUID = .init()
     private let timeStamp: Date = .init()
 
     public let start: CGPoint
     public let end: CGPoint
 
+    private let startColor: HSB
+    private let endColor: HSB
+
     private let rotation: CGFloat
     public let trunkDistance: Int
 
     public var isOnEdge: Bool {
-        if trunkDistance > 8 { return true }
+        if trunkDistance > 7 { return true }
 
         let sides = end.x <= 0 || end.x >= 1
         let top = end.y <= 0
@@ -34,9 +37,23 @@ struct Branch: Identifiable, Equatable, Shape {
         RadianCircle.length(start: start, end: end)
     }
 
-    init(start: CGPoint, end: CGPoint, rotation: CGFloat, trunkDistance: Int) {
+    public var colors: [Color] {
+        [startColor.color, endColor.color]
+    }
+
+    public var gradient: LinearGradient {
+        LinearGradient(
+            gradient: Gradient(colors: colors),
+            startPoint: .init(x: start.x, y: 1 - start.y),
+            endPoint: .init(x: end.x, y: 1 - end.y)
+        )
+    }
+
+    init(start: CGPoint, end: CGPoint, startColor: HSB, rotation: CGFloat, trunkDistance: Int) {
         self.start = start
         self.end = end
+        self.startColor = startColor
+        self.endColor = startColor.nextColor()
         self.rotation = rotation
         self.trunkDistance = trunkDistance
     }
@@ -48,8 +65,9 @@ struct Branch: Identifiable, Equatable, Shape {
         let newStart = end
         let newRadian = radian - rotation
         let newEnd = RadianCircle.endPoint(from: newStart, radian: newRadian, length: newLength)
+        let newStartColor = endColor
 
-        return Branch(start: newStart, end: newEnd, rotation: rotation, trunkDistance: trunkDistance + 1)
+        return Branch(start: newStart, end: newEnd, startColor: newStartColor, rotation: rotation, trunkDistance: trunkDistance + 1)
     }
 
     public func isGrowing(_ growTime: Double) -> Bool {
@@ -61,9 +79,10 @@ struct Branch: Identifiable, Equatable, Shape {
     public func path(in rect: CGRect) -> Path {
         Path { path in
             let startX = start.x * rect.maxX
-            let startY = 1 * rect.maxY - start.y * rect.maxX
+            let startY = (1 - start.y) * rect.maxY
+
             let endX = end.x * rect.maxX
-            let endY = 1 * rect.maxY - end.y * rect.maxX
+            let endY = (1 - end.y) * rect.maxY
 
             let startPoint = CGPoint(x: startX, y: startY)
             let endPoint = CGPoint(x: endX, y: endY)
@@ -74,12 +93,12 @@ struct Branch: Identifiable, Equatable, Shape {
     }
 
     public func hasRotation(in newRotation: CGFloat) -> Bool {
-        let bothLeftRotated = rotation <= 0 && newRotation <= 0
-        let bothRightRotated = rotation >= 0 && newRotation >= 0
+        let bothLeftRotated = rotation < 0 && newRotation < 0
+        let bothRightRotated = rotation > 0 && newRotation > 0
         return bothLeftRotated || bothRightRotated
     }
 }
 
 extension Branch {
-    static let mock = Branch(start: CGPoint(x: 0.5, y: 0), end: CGPoint(x: 0.5, y: 0.5), rotation: 0, trunkDistance: 0)
+    static let mock = Branch(start: CGPoint(x: 0.5, y: 0), end: CGPoint(x: 0.5, y: 0.5), startColor: HSB.mock, rotation: 0, trunkDistance: 0)
 }
