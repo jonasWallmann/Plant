@@ -21,7 +21,7 @@ struct Branch: Identifiable, Shape {
     public let trunkDistance: Int
 
     public var isOnEdge: Bool {
-        if trunkDistance > 7 { return true }
+        if trunkDistance > 6 { return true }
 
         let sides = end.x <= 0 || end.x >= 1
         let top = end.y <= 0
@@ -49,25 +49,25 @@ struct Branch: Identifiable, Shape {
         )
     }
 
-    init(start: CGPoint, end: CGPoint, startColor: HSB, rotation: CGFloat, trunkDistance: Int) {
+    init(start: CGPoint, end: CGPoint, startColor: HSB, rotation: CGFloat, trunkDistance: Int, settings: SettingsVM) {
         self.start = start
         self.end = end
         self.startColor = startColor
-        self.endColor = startColor.nextColor()
+        self.endColor = startColor.nextHSB(settings: settings)
         self.rotation = rotation
         self.trunkDistance = trunkDistance
     }
 
     // MARK: Next Branch ------------------------------------------
 
-    public func nextBranch(rotation: CGFloat, length: CGFloat?) -> Branch {
+    public func nextBranch(rotation: CGFloat, length: CGFloat?, settings: SettingsVM) -> Branch {
         let newLength = length ?? (0.16 - log(CGFloat(trunkDistance + 1)) / 17)
         let newStart = end
         let newRadian = radian - rotation
         let newEnd = RadianCircle.endPoint(from: newStart, radian: newRadian, length: newLength)
         let newStartColor = endColor
 
-        return Branch(start: newStart, end: newEnd, startColor: newStartColor, rotation: rotation, trunkDistance: trunkDistance + 1)
+        return Branch(start: newStart, end: newEnd, startColor: newStartColor, rotation: rotation, trunkDistance: trunkDistance + 1, settings: settings)
     }
 
     public func isGrowing(_ growTime: Double) -> Bool {
@@ -100,5 +100,5 @@ struct Branch: Identifiable, Shape {
 }
 
 extension Branch {
-    static let mock = Branch(start: CGPoint(x: 0.5, y: 0), end: CGPoint(x: 0.5, y: 0.5), startColor: HSB.mock, rotation: 0, trunkDistance: 0)
+    static let mock = Branch(start: CGPoint(x: 0.5, y: 0), end: CGPoint(x: 0.5, y: 0.5), startColor: HSB.mock, rotation: 0, trunkDistance: 0, settings: SettingsVM())
 }

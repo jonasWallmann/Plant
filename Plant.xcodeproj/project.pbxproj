@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7521296829EC7E4900489E62 /* TimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521296729EC7E4900489E62 /* TimesView.swift */; };
+		7521296E29EC7EA400489E62 /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521296D29EC7EA400489E62 /* AppearanceView.swift */; };
+		7521297029EC7EFB00489E62 /* SliderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521296F29EC7EFB00489E62 /* SliderBuilder.swift */; };
+		7521297229EC800300489E62 /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521297129EC800300489E62 /* Modifier.swift */; };
+		7521297429EC810400489E62 /* SettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521297329EC810400489E62 /* SettingsVM.swift */; };
+		7521297629EC811600489E62 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521297529EC811600489E62 /* ColorView.swift */; };
+		7521297829EC81F600489E62 /* PlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521297729EC81F600489E62 /* PlantView.swift */; };
+		7521297A29EC82D300489E62 /* GrowingPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521297929EC82D300489E62 /* GrowingPlantView.swift */; };
 		7581ED6A29EABA4B0040425A /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6929EABA4B0040425A /* Shake.swift */; };
 		7581ED6C29EAC1350040425A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6B29EAC1350040425A /* Enums.swift */; };
 		7581ED6E29EAD6FE0040425A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6D29EAD6FE0040425A /* SettingsView.swift */; };
 		759F514329E4484D00FA3FE8 /* PlantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F514229E4484D00FA3FE8 /* PlantApp.swift */; };
-		759F514529E4484D00FA3FE8 /* PlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F514429E4484D00FA3FE8 /* PlantView.swift */; };
+		759F514529E4484D00FA3FE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F514429E4484D00FA3FE8 /* ContentView.swift */; };
 		759F514729E4484D00FA3FE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 759F514629E4484D00FA3FE8 /* Assets.xcassets */; };
 		759F514A29E4484D00FA3FE8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 759F514929E4484D00FA3FE8 /* Preview Assets.xcassets */; };
 		759F515429E4484D00FA3FE8 /* PlantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F515329E4484D00FA3FE8 /* PlantTests.swift */; };
@@ -45,12 +53,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7521296729EC7E4900489E62 /* TimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesView.swift; sourceTree = "<group>"; };
+		7521296D29EC7EA400489E62 /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
+		7521296F29EC7EFB00489E62 /* SliderBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderBuilder.swift; sourceTree = "<group>"; };
+		7521297129EC800300489E62 /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
+		7521297329EC810400489E62 /* SettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVM.swift; sourceTree = "<group>"; };
+		7521297529EC811600489E62 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
+		7521297729EC81F600489E62 /* PlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantView.swift; sourceTree = "<group>"; };
+		7521297929EC82D300489E62 /* GrowingPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingPlantView.swift; sourceTree = "<group>"; };
 		7581ED6929EABA4B0040425A /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
 		7581ED6B29EAC1350040425A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7581ED6D29EAD6FE0040425A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		759F513F29E4484D00FA3FE8 /* Plant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		759F514229E4484D00FA3FE8 /* PlantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantApp.swift; sourceTree = "<group>"; };
-		759F514429E4484D00FA3FE8 /* PlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantView.swift; sourceTree = "<group>"; };
+		759F514429E4484D00FA3FE8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		759F514629E4484D00FA3FE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		759F514929E4484D00FA3FE8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		759F514F29E4484D00FA3FE8 /* PlantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +109,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7521296629EC7E3300489E62 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7521297329EC810400489E62 /* SettingsVM.swift */,
+				7581ED6D29EAD6FE0040425A /* SettingsView.swift */,
+				7581ED6B29EAC1350040425A /* Enums.swift */,
+				7521297B29EC832A00489E62 /* areas */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7521297B29EC832A00489E62 /* areas */ = {
+			isa = PBXGroup;
+			children = (
+				7521296729EC7E4900489E62 /* TimesView.swift */,
+				7521296D29EC7EA400489E62 /* AppearanceView.swift */,
+				7521297529EC811600489E62 /* ColorView.swift */,
+			);
+			path = areas;
+			sourceTree = "<group>";
+		};
+		7521297C29EC847B00489E62 /* Plant */ = {
+			isa = PBXGroup;
+			children = (
+				759F516C29E4488000FA3FE8 /* PlantVM.swift */,
+				7521297929EC82D300489E62 /* GrowingPlantView.swift */,
+				7521297729EC81F600489E62 /* PlantView.swift */,
+				759F517D29E4680300FA3FE8 /* Branch */,
+			);
+			path = Plant;
+			sourceTree = "<group>";
+		};
 		759F513629E4484D00FA3FE8 = {
 			isa = PBXGroup;
 			children = (
@@ -118,12 +166,9 @@
 			children = (
 				759F514629E4484D00FA3FE8 /* Assets.xcassets */,
 				759F514229E4484D00FA3FE8 /* PlantApp.swift */,
-				759F516C29E4488000FA3FE8 /* PlantVM.swift */,
-				759F514429E4484D00FA3FE8 /* PlantView.swift */,
-				7581ED6D29EAD6FE0040425A /* SettingsView.swift */,
-				7581ED6B29EAC1350040425A /* Enums.swift */,
-				75E1281129EC0BFF0000DA6A /* HSB.swift */,
-				759F517D29E4680300FA3FE8 /* Branch */,
+				759F514429E4484D00FA3FE8 /* ContentView.swift */,
+				7521296629EC7E3300489E62 /* Settings */,
+				7521297C29EC847B00489E62 /* Plant */,
 				759F517C29E467F700FA3FE8 /* Assistance */,
 				759F514829E4484D00FA3FE8 /* Preview Content */,
 			);
@@ -163,6 +208,8 @@
 				759F517029E448AE00FA3FE8 /* RadianCircle.swift */,
 				759F517229E448BE00FA3FE8 /* MotionManager.swift */,
 				7581ED6929EABA4B0040425A /* Shake.swift */,
+				7521296F29EC7EFB00489E62 /* SliderBuilder.swift */,
+				7521297129EC800300489E62 /* Modifier.swift */,
 			);
 			path = Assistance;
 			sourceTree = "<group>";
@@ -172,6 +219,7 @@
 			children = (
 				759F516E29E4489B00FA3FE8 /* Branch.swift */,
 				759F517429E448D300FA3FE8 /* BranchView.swift */,
+				75E1281129EC0BFF0000DA6A /* HSB.swift */,
 			);
 			path = Branch;
 			sourceTree = "<group>";
@@ -306,17 +354,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				759F514529E4484D00FA3FE8 /* PlantView.swift in Sources */,
+				759F514529E4484D00FA3FE8 /* ContentView.swift in Sources */,
+				7521297A29EC82D300489E62 /* GrowingPlantView.swift in Sources */,
 				759F517529E448D300FA3FE8 /* BranchView.swift in Sources */,
 				7581ED6A29EABA4B0040425A /* Shake.swift in Sources */,
+				7521296E29EC7EA400489E62 /* AppearanceView.swift in Sources */,
 				759F517329E448BE00FA3FE8 /* MotionManager.swift in Sources */,
 				75E1281229EC0BFF0000DA6A /* HSB.swift in Sources */,
 				759F516F29E4489B00FA3FE8 /* Branch.swift in Sources */,
+				7521297629EC811600489E62 /* ColorView.swift in Sources */,
+				7521297829EC81F600489E62 /* PlantView.swift in Sources */,
 				7581ED6E29EAD6FE0040425A /* SettingsView.swift in Sources */,
+				7521297029EC7EFB00489E62 /* SliderBuilder.swift in Sources */,
 				759F514329E4484D00FA3FE8 /* PlantApp.swift in Sources */,
+				7521297229EC800300489E62 /* Modifier.swift in Sources */,
 				759F517129E448AE00FA3FE8 /* RadianCircle.swift in Sources */,
 				7581ED6C29EAC1350040425A /* Enums.swift in Sources */,
 				759F516D29E4488000FA3FE8 /* PlantVM.swift in Sources */,
+				7521296829EC7E4900489E62 /* TimesView.swift in Sources */,
+				7521297429EC810400489E62 /* SettingsVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

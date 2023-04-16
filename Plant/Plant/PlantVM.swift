@@ -11,23 +11,17 @@ class PlantVM: ObservableObject {
     @Published private(set) var branches: [Branch] = []
     @Published private(set) var opacity: Double = 1
 
-    @Published public var showingSettings: Bool = false
-
-    @Published public var growTime: Double = 1
-    @Published public var newBranchTime: Double = 0.2
-
-    @Published public var lengthControl: LengthControlEnum = .absolute
-    @Published public var rotationControl: RotationControlEnum = .absolute
-
-    @Published public var startColor: HSB = .mock
-
+    public let settings: SettingsVM
     private let motionManager = MotionManager()
 
+    private var addingBranches: Bool = false
+
     private var usingNewBranchTime: Double {
-        newBranchTime == 0 ? 0.0001 : newBranchTime
+        settings.newBranchTime == 0 ? 0.0001 : settings.newBranchTime
     }
 
-    init() {
+    init(settingsVM: SettingsVM) {
+        settings = settingsVM
         addTrunk()
     }
 
@@ -35,30 +29,35 @@ class PlantVM: ObservableObject {
 
     public func addTrunk() {
         let start = CGPoint(x: 0.5, y: 0)
-        let end = CGPoint(x: 0.5, y: 0.2)
-        let trunk = Branch(start: start, end: end, startColor: startColor, rotation: 0, trunkDistance: 0)
+        let end = CGPoint(x: 0.5, y: 0.25)
+        let trunk = Branch(start: start, end: end, startColor: settings.startHSB, rotation: 0, trunkDistance: 0, settings: settings)
         branches.append(trunk)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + growTime) {
-            self.addBranch()
+        if addingBranches { return }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + settings.growTime) {
+            self.addBranches()
         }
     }
 
-    private func addBranch() {
-        if branches.count > 2000 { return }
+    public func addBranches() {
+        addingBranches = true
 
-        if !showingSettings {
-            let rotation = getRotation()
-            let length = getLength()
+        if settings.showingSettings || branches.count > 2000 {
+            addingBranches = false
+            return
+        }
+        
+        let rotation = getRotation()
+        let length = getLength()
 
-            if let growingBranch = getGrowingBranch(at: rotation) {
-                let newBranch = growingBranch.nextBranch(rotation: rotation, length: length)
-                branches.append(newBranch)
-            }
+        if let growingBranch = getGrowingBranch(at: rotation) {
+            let newBranch = growingBranch.nextBranch(rotation: rotation, length: length, settings: settings)
+            branches.append(newBranch)
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + newBranchTime) {
-            self.addBranch()
+        DispatchQueue.main.asyncAfter(deadline: .now() + settings.newBranchTime) {
+            self.addBranches()
         }
     }
 
@@ -66,7 +65,7 @@ class PlantVM: ObservableObject {
         var potentials: [Branch] = []
 
         for branch in branches {
-            if branch.isGrowing(growTime) || branch.isOnEdge { continue }
+            if branch.isGrowing(settings.growTime) || branch.isOnEdge { continue }
 
             if !branches.contains(where: { $0.start == branch.end && $0.hasRotation(in: rotation) }) {
                 potentials.append(branch)
@@ -80,7 +79,7 @@ class PlantVM: ObservableObject {
     private func getRotation() -> CGFloat {
         guard let roll = motionManager.roll else { return 0 }
 
-        switch rotationControl {
+        switch settings.rotationControl {
         case .absolute:
             if roll > 0 {
                 return CGFloat.pi / 12
@@ -92,7 +91,7 @@ class PlantVM: ObservableObject {
     }
 
     private func getLength() -> CGFloat? {
-        switch lengthControl {
+        switch settings.lengthControl {
         case .absolute:
             return nil
         case .relative:

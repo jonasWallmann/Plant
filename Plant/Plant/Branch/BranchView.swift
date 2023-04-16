@@ -16,9 +16,9 @@ struct BranchView: View {
     var body: some View {
         branch
             .trim(from: 0.0, to: pathProgress)
-            .stroke(branch.gradient, lineWidth: 2.5)
+            .stroke(branch.gradient, style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
             .onAppear {
-                withAnimation(Animation.easeOut(duration: growTime)) {
+                withAnimation(Animation.easeInOut(duration: growTime)) {
                     pathProgress = 1
                 }
             }

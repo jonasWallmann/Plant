@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct PlantApp: App {
+    @StateObject private var settingsVM = SettingsVM()
+
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                PlantView()
+                ContentView(settingsVM: settingsVM, plantVM: PlantVM(settingsVM: settingsVM))
             }
         }
     }
