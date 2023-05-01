@@ -14,7 +14,7 @@ struct HSB: Identifiable {
     let saturation: Double
     let brightness: Double
 
-    var color: Color {
+    var color: Color? {
         Color(hue: hue / 360, saturation: saturation / 360, brightness: brightness / 360)
     }
 
@@ -27,7 +27,7 @@ struct HSB: Identifiable {
     }
 
     public func testGradient(with settings: SettingsVM) -> Gradient {
-        Gradient(colors: [color, nextHSB(settings: settings).color])
+        Gradient(colors: [color ?? .black, nextHSB(settings: settings).color ?? .black])
     }
 }
 

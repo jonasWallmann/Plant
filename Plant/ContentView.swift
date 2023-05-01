@@ -12,24 +12,38 @@ struct ContentView: View {
     @StateObject var plantVM: PlantVM
 
     var body: some View {
-        GrowingPlantView(vm: plantVM)
-            .toolbar {
-                Button {
-                    settingsVM.showingSettings = true
-                } label: {
-                    Image(systemName: "gear")
-                }
-            }
-            .sheet(isPresented: $settingsVM.showingSettings) {
-                NavigationStack {
-                    SettingsView()
-                        .environmentObject(settingsVM)
-                        .onDisappear {
-                            plantVM.addBranches()
+        GeometryReader { geo in
+            ZStack(alignment: .bottom) {
+                GrowingPlantView(vm: plantVM)
+                    .toolbar {
+                        Button {
+                            plantVM.stopGrowing()
+                            settingsVM.showingSettings = true
+                        } label: {
+                            Image(systemName: "gear")
                         }
-                }
+                    }
+                    .sheet(isPresented: $settingsVM.showingSettings) {
+                        NavigationStack {
+                            SettingsView()
+                                .environmentObject(settingsVM)
+                                .onDisappear {
+                                    plantVM.resumeGrowing()
+                                }
+//                                .presentationBackground(Material.thin)
+                        }
+                    }
+
+                settingsVM.startColor
+                    .frame(height: groundHeight(geo))
             }
-            .statusBarHidden()
+        }
+
+        .statusBarHidden()
+    }
+
+    func groundHeight(_ geo: GeometryProxy) -> CGFloat {
+        return geo.size.height - geo.size.width
     }
 }
 

@@ -14,7 +14,7 @@ class PlantVM: ObservableObject {
     public let settings: SettingsVM
     private let motionManager = MotionManager()
 
-    private var addingBranches: Bool = false
+    private var addingBranches: Bool = true
 
     private var usingNewBranchTime: Double {
         settings.newBranchTime == 0 ? 0.0001 : settings.newBranchTime
@@ -28,9 +28,9 @@ class PlantVM: ObservableObject {
     // MARK: Growing --------------------------------------------------
 
     public func addTrunk() {
-        let start = CGPoint(x: 0.5, y: 0)
-        let end = CGPoint(x: 0.5, y: 0.25)
-        let trunk = Branch(start: start, end: end, startWidth: 20, startColor: settings.startHSB, endColor: settings.startHSB.nextHSB(settings: settings), rotation: 0, trunkDistance: 0)
+        let start = CGPoint(x: 0.5, y: 1)
+        let end = CGPoint(x: 0.5, y: 0.75)
+        let trunk = Branch(start: start, end: end, startWidth: 20, startColor: settings.startHSB, endColor: settings.startHSB.nextHSB(settings: settings), rotation: 0, trunkDistance: 0, previousRadian: .pi / 2)
         branches.append(trunk)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + settings.growTime) {
@@ -38,13 +38,8 @@ class PlantVM: ObservableObject {
         }
     }
 
-    public func addBranches() {
-        addingBranches = true
-
-        if settings.showingSettings || branches.count > 2000 {
-            addingBranches = false
-            return
-        }
+    private func addBranches() {
+        if !addingBranches { return }
 
         let rotation = getRotation()
         let length = getLength()
@@ -57,6 +52,15 @@ class PlantVM: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + settings.newBranchTime) {
             self.addBranches()
         }
+    }
+
+    public func resumeGrowing() {
+        addingBranches = true
+        addBranches()
+    }
+
+    public func stopGrowing() {
+        addingBranches = false
     }
 
     private func getGrowingBranch(at rotation: CGFloat) -> Branch? {

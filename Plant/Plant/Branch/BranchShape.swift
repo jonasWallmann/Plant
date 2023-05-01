@@ -23,35 +23,25 @@ struct BranchShape: Shape {
     }
 
     public func path(in rect: CGRect) -> Path {
-        Path { path in
-            let length = RadianCircle.length(start: branch.start, end: branch.end)
-            let progressLength = length * progress
+        let length = RadianCircle.length(start: branch.start, end: branch.end, in: rect)
+        let progressLength = length * progress
 
-            let start = branch.start
-            let end = RadianCircle.endPoint(from: branch.start, radian: branch.radian, length: progressLength)
+        let startPoint = RadianCircle.point(from: branch.start, in: rect)
+        let endPoint = RadianCircle.endPoint(from: startPoint, radian: branch.radian, length: progressLength)
 
-            let startX = start.x * rect.maxX
-            let startY = (1 - start.y) * rect.maxY
+        let radian = RadianCircle.radian(from: branch.start, to: branch.end)
 
-            let endX = end.x * rect.maxX
-            let endY = (1 - end.y) * rect.maxY
+        let leftStartPoint = RadianCircle.widthPoint(from: startPoint, width: branch.startWidth, direction: .left, radian: branch.previousRadian)
+        let rightStartPoint = RadianCircle.widthPoint(from: startPoint, width: branch.startWidth, direction: .right, radian: branch.previousRadian)
 
-            let startPoint = CGPoint(x: startX, y: startY)
-            let endPoint = CGPoint(x: endX, y: endY)
+        let leftEndPoint = RadianCircle.widthPoint(from: endPoint, width: branch.endWidth, direction: .left, radian: radian)
+        let rightEndPoint = RadianCircle.widthPoint(from: endPoint, width: branch.endWidth, direction: .right, radian: radian)
 
-            let radian = RadianCircle.radian(form: startPoint, to: endPoint)
-
-            let leftStartPoint = RadianCircle.widthPoint(from: startPoint, width: branch.startWidth, direction: .left, radian: radian)
-            let rightStartPoint = RadianCircle.widthPoint(from: startPoint, width: branch.startWidth, direction: .right, radian: radian)
-
-            let leftEndPoint = RadianCircle.widthPoint(from: endPoint, width: branch.endWidth, direction: .left, radian: radian)
-            let rightEndPoint = RadianCircle.widthPoint(from: endPoint, width: branch.endWidth, direction: .right, radian: radian)
-
+        return Path { path in
             path.move(to: leftStartPoint)
             path.addLine(to: rightStartPoint)
             path.addLine(to: rightEndPoint)
             path.addLine(to: leftEndPoint)
-            path.addLine(to: leftStartPoint)
         }
     }
 }

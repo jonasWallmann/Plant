@@ -15,6 +15,7 @@ struct PlantApp: App {
         WindowGroup {
             NavigationStack {
                 ContentView(settingsVM: settingsVM, plantVM: PlantVM(settingsVM: settingsVM))
+//                TestView()
             }
         }
     }

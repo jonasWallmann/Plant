@@ -34,6 +34,10 @@ class SettingsVM: ObservableObject {
         HSB(hue: startHue, saturation: startSaturation, brightness: startBrightness)
     }
 
+    public var startColor: Color? {
+        startHSB.color
+    }
+
     public var hsbs: [HSB] {
         var array: [HSB] = []
         array.append(startHSB)

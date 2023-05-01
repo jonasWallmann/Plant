@@ -8,21 +8,25 @@
 import Foundation
 
 class RadianCircle {
-    static func radian(form start: CGPoint, to end: CGPoint) -> CGFloat {
-        let height = height(start: start, end: end)
+    static func radian(from start: CGPoint, to end: CGPoint) -> CGFloat {
+        return absoluteRadian(from: start, to: end).truncatingRemainder(dividingBy: 2 * .pi)
+    }
+
+    static func absoluteRadian(from start: CGPoint, to end: CGPoint) -> CGFloat {
         let width = width(start: start, end: end)
+        let height = height(start: start, end: end)
 
         // corners
-        if start.x < end.x && start.y < end.y {
+        if start.x < end.x && start.y > end.y {
             return atan(height / width)
         }
-        if start.x > end.x && start.y < end.y {
+        if start.x > end.x && start.y > end.y {
             return atan(width / height) + .pi * 0.5
         }
-        if start.x > end.x && start.y > end.y {
+        if start.x > end.x && start.y < end.y {
             return atan(height / width) + .pi
         }
-        if start.x < end.x && start.y > end.y {
+        if start.x < end.x && start.y < end.y {
             return atan(width / height) + .pi * 1.5
         }
 
@@ -30,13 +34,13 @@ class RadianCircle {
         if start.x < end.x && start.y == end.y {
             return 0
         }
-        if start.x == end.x && start.y < end.y {
+        if start.x == end.x && start.y > end.y {
             return .pi * 0.5
         }
         if start.x > end.x && start.y == end.y {
             return .pi
         }
-        if start.x == end.x && start.y > end.y {
+        if start.x == end.x && start.y < end.y {
             return .pi * 1.5
         }
         return .pi * 0.5
@@ -54,41 +58,41 @@ class RadianCircle {
             let angle = radian
             let width = cos(angle) * length
             let height = sin(angle) * length
-            return endPoint(from: start, width: width, height: height)
+            return CGPoint(x: start.x + width, y: start.y - height)
         }
         if radian > .pi * 0.5 && radian < .pi {
-            let angle = radian - .pi / 2
-            let width = -sin(angle) * length
+            let angle = radian - .pi * 0.5
+            let width = sin(angle) * length
             let height = cos(angle) * length
-            return endPoint(from: start, width: width, height: height)
+            return CGPoint(x: start.x - width, y: start.y - height)
         }
         if radian > .pi && radian < .pi * 1.5 {
             let angle = radian - .pi
-            let with = -cos(angle) * length
-            let height = -sin(angle) * length
-            return endPoint(from: start, width: with, height: height)
+            let width = cos(angle) * length
+            let height = sin(angle) * length
+            return CGPoint(x: start.x - width, y: start.y + height)
         }
         if radian > .pi * 1.5 && (radian < 0 || radian < .pi * 2) {
             let angle = radian - .pi * 1.5
             let width = sin(angle) * length
-            let height = -cos(angle) * length
-            return endPoint(from: start, width: width, height: height)
+            let height = cos(angle) * length
+            return CGPoint(x: start.x + width, y: start.y + height)
         }
 
         // axes
         if radian == 0 || radian == .pi * 2 {
-            return endPoint(from: start, width: length, height: 0)
+            return CGPoint(x: start.x + length, y: start.y)
         }
         if radian == .pi * 0.5 {
-            return endPoint(from: start, width: 0, height: length)
+            return CGPoint(x: start.x, y: start.y - length)
         }
         if radian == .pi {
-            return endPoint(from: start, width: -length, height: 0)
+            return CGPoint(x: start.x - length, y: start.y)
         }
         if radian == .pi * 1.5 {
-            return endPoint(from: start, width: 0, height: -length)
+            return CGPoint(x: start.x, y: start.y + length)
         }
-        return endPoint(from: start, width: 0, height: length)
+        return CGPoint(x: start.x + length, y: start.y)
     }
 
     public static func widthPoint(from point: CGPoint, width: CGFloat, direction: DirectionEnum, radian: CGFloat) -> CGPoint {
@@ -98,12 +102,14 @@ class RadianCircle {
         return endPoint(from: point, radian: newRadian, length: width)
     }
 
-    private static func endPoint(from start: CGPoint, width: CGFloat, height: CGFloat) -> CGPoint {
-        return CGPoint(x: start.x + width, y: start.y + height)
+    public static func point(from point: CGPoint, in rect: CGRect) -> CGPoint {
+        return CGPoint(x: point.x * rect.maxX, y: point.y * rect.maxX)
     }
 
-    public static func length(start: CGPoint, end: CGPoint) -> CGFloat {
-        sqrt(pow(height(start: start, end: end), 2) + pow(width(start: start, end: end), 2))
+    public static func length(start: CGPoint, end: CGPoint, in rect: CGRect) -> CGFloat {
+        let width = width(start: start, end: end) * rect.maxX
+        let height = height(start: start, end: end) * rect.maxX
+        return sqrt(pow(width, 2) + pow(height, 2))
     }
 
     private static func height(start: CGPoint, end: CGPoint) -> CGFloat {

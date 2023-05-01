@@ -19,6 +19,10 @@
 		7581ED6A29EABA4B0040425A /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6929EABA4B0040425A /* Shake.swift */; };
 		7581ED6C29EAC1350040425A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6B29EAC1350040425A /* Enums.swift */; };
 		7581ED6E29EAD6FE0040425A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6D29EAD6FE0040425A /* SettingsView.swift */; };
+		758646C729FFFBCD0012F285 /* BranchTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758646C629FFFBCD0012F285 /* BranchTestView.swift */; };
+		759D00452A0033CB0003EA21 /* WidthPointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759D00442A0033CB0003EA21 /* WidthPointTest.swift */; };
+		759D00472A003BDF0003EA21 /* WidthPointTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759D00462A003BDF0003EA21 /* WidthPointTestView.swift */; };
+		759D00492A004A7F0003EA21 /* EndPointTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759D00482A004A7F0003EA21 /* EndPointTestView.swift */; };
 		759F514329E4484D00FA3FE8 /* PlantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F514229E4484D00FA3FE8 /* PlantApp.swift */; };
 		759F514529E4484D00FA3FE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F514429E4484D00FA3FE8 /* ContentView.swift */; };
 		759F514729E4484D00FA3FE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 759F514629E4484D00FA3FE8 /* Assets.xcassets */; };
@@ -67,6 +71,10 @@
 		7581ED6929EABA4B0040425A /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
 		7581ED6B29EAC1350040425A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7581ED6D29EAD6FE0040425A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		758646C629FFFBCD0012F285 /* BranchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchTestView.swift; sourceTree = "<group>"; };
+		759D00442A0033CB0003EA21 /* WidthPointTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidthPointTest.swift; sourceTree = "<group>"; };
+		759D00462A003BDF0003EA21 /* WidthPointTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidthPointTestView.swift; sourceTree = "<group>"; };
+		759D00482A004A7F0003EA21 /* EndPointTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointTestView.swift; sourceTree = "<group>"; };
 		759F513F29E4484D00FA3FE8 /* Plant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		759F514229E4484D00FA3FE8 /* PlantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantApp.swift; sourceTree = "<group>"; };
 		759F514429E4484D00FA3FE8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -172,6 +180,9 @@
 				759F514629E4484D00FA3FE8 /* Assets.xcassets */,
 				759F514229E4484D00FA3FE8 /* PlantApp.swift */,
 				759F514429E4484D00FA3FE8 /* ContentView.swift */,
+				758646C629FFFBCD0012F285 /* BranchTestView.swift */,
+				759D00462A003BDF0003EA21 /* WidthPointTestView.swift */,
+				759D00482A004A7F0003EA21 /* EndPointTestView.swift */,
 				7521296629EC7E3300489E62 /* Settings */,
 				7521297C29EC847B00489E62 /* Plant */,
 				759F517C29E467F700FA3FE8 /* Assistance */,
@@ -194,6 +205,7 @@
 				759F515329E4484D00FA3FE8 /* PlantTests.swift */,
 				759F517829E448FC00FA3FE8 /* RadianTest.swift */,
 				759F517A29E4491B00FA3FE8 /* EndPointTest.swift */,
+				759D00442A0033CB0003EA21 /* WidthPointTest.swift */,
 			);
 			path = PlantTests;
 			sourceTree = "<group>";
@@ -362,6 +374,7 @@
 			files = (
 				759F514529E4484D00FA3FE8 /* ContentView.swift in Sources */,
 				7521297A29EC82D300489E62 /* GrowingPlantView.swift in Sources */,
+				758646C729FFFBCD0012F285 /* BranchTestView.swift in Sources */,
 				759F517529E448D300FA3FE8 /* BranchView.swift in Sources */,
 				7581ED6A29EABA4B0040425A /* Shake.swift in Sources */,
 				7521296E29EC7EA400489E62 /* AppearanceView.swift in Sources */,
@@ -369,6 +382,7 @@
 				75E1281229EC0BFF0000DA6A /* HSB.swift in Sources */,
 				75B86E7A29FFCCD50035BA4E /* BranchShape.swift in Sources */,
 				759F516F29E4489B00FA3FE8 /* Branch.swift in Sources */,
+				759D00472A003BDF0003EA21 /* WidthPointTestView.swift in Sources */,
 				7521297629EC811600489E62 /* ColorView.swift in Sources */,
 				7521297829EC81F600489E62 /* PlantView.swift in Sources */,
 				7581ED6E29EAD6FE0040425A /* SettingsView.swift in Sources */,
@@ -379,6 +393,7 @@
 				759F517129E448AE00FA3FE8 /* RadianCircle.swift in Sources */,
 				7581ED6C29EAC1350040425A /* Enums.swift in Sources */,
 				759F516D29E4488000FA3FE8 /* PlantVM.swift in Sources */,
+				759D00492A004A7F0003EA21 /* EndPointTestView.swift in Sources */,
 				7521296829EC7E4900489E62 /* TimesView.swift in Sources */,
 				7521297429EC810400489E62 /* SettingsVM.swift in Sources */,
 			);
@@ -389,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				759F517B29E4491B00FA3FE8 /* EndPointTest.swift in Sources */,
+				759D00452A0033CB0003EA21 /* WidthPointTest.swift in Sources */,
 				759F517929E448FC00FA3FE8 /* RadianTest.swift in Sources */,
 				759F515429E4484D00FA3FE8 /* PlantTests.swift in Sources */,
 			);
@@ -549,6 +565,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -578,6 +595,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

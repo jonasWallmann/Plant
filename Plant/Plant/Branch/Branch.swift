@@ -23,27 +23,33 @@ struct Branch: Identifiable {
     private let rotation: CGFloat
     private let trunkDistance: Int
 
+    public let previousRadian: CGFloat
+
     public var radian: CGFloat {
-        RadianCircle.radian(form: start, to: end)
+        return RadianCircle.radian(from: start, to: end)
     }
 
-    private var length: CGFloat {
-        RadianCircle.length(start: start, end: end)
+    public var direction: DirectionEnum {
+        return rotation < 0 ? .left : .right
     }
 
     public var colors: [Color] {
-        [startColor.color, endColor.color]
+        guard let start = startColor.color,
+              let end = endColor.color
+        else { return [.indigo] }
+
+        return [start, end]
     }
 
     public var gradient: LinearGradient {
         LinearGradient(
             gradient: Gradient(colors: colors),
-            startPoint: .init(x: start.x, y: 1 - start.y),
-            endPoint: .init(x: end.x, y: 1 - end.y)
+            startPoint: .init(x: start.x, y: start.y),
+            endPoint: .init(x: end.x, y: end.y)
         )
     }
 
-    init(start: CGPoint, end: CGPoint, startWidth: CGFloat, startColor: HSB, endColor: HSB, rotation: CGFloat, trunkDistance: Int) {
+    init(start: CGPoint, end: CGPoint, startWidth: CGFloat, startColor: HSB, endColor: HSB, rotation: CGFloat, trunkDistance: Int, previousRadian: CGFloat) {
         self.start = start
         self.end = end
         self.startWidth = startWidth
@@ -52,6 +58,7 @@ struct Branch: Identifiable {
         self.endColor = endColor
         self.rotation = rotation
         self.trunkDistance = trunkDistance
+        self.previousRadian = previousRadian
     }
 
     // MARK: Next Branch ------------------------------------------
@@ -60,17 +67,17 @@ struct Branch: Identifiable {
         let newLength = newLength ?? (0.16 - log(CGFloat(trunkDistance + 1)) / 17)
         let newRadian = radian - newRotation
 
-        let newStart = end
+        let newStart = CGPoint(x: end.x, y: end.y)
         let newEnd = RadianCircle.endPoint(from: newStart, radian: newRadian, length: newLength)
 
         let newStartWidth = endWidth
 
         let newStartColor = endColor
-        let newEndColor = startColor.nextHSB(settings: settings)
+        let newEndColor = newStartColor.nextHSB(settings: settings)
 
         let newTrunkDistance = trunkDistance + 1
 
-        return Branch(start: newStart, end: newEnd, startWidth: newStartWidth, startColor: newStartColor, endColor: newEndColor, rotation: newRotation, trunkDistance: newTrunkDistance)
+        return Branch(start: newStart, end: newEnd, startWidth: newStartWidth, startColor: newStartColor, endColor: newEndColor, rotation: newRotation, trunkDistance: newTrunkDistance, previousRadian: radian)
     }
 
     public func isGrowing(_ growTime: Double) -> Bool {
@@ -93,5 +100,5 @@ struct Branch: Identifiable {
 }
 
 extension Branch {
-    static let mock = Branch(start: CGPoint(x: 0.5, y: 0), end: CGPoint(x: 0.5, y: 0.5), startWidth: 10, startColor: HSB.mock, endColor: HSB.mock.nextHSB(settings: SettingsVM()), rotation: 0, trunkDistance: 0)
+    static let mock = Branch(start: CGPoint(x: 0.5, y: 1), end: CGPoint(x: 0.5, y: 0.5), startWidth: 10, startColor: HSB.mock, endColor: HSB.mock.nextHSB(settings: SettingsVM()), rotation: 0, trunkDistance: 0, previousRadian: .pi / 2)
 }
