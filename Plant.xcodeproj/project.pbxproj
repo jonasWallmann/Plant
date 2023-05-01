@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		750F962F29FA89B700598B96 /* TrunkDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F962E29FA89B700598B96 /* TrunkDistanceView.swift */; };
 		7521296829EC7E4900489E62 /* TimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521296729EC7E4900489E62 /* TimesView.swift */; };
 		7521296E29EC7EA400489E62 /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521296D29EC7EA400489E62 /* AppearanceView.swift */; };
 		7521297029EC7EFB00489E62 /* SliderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521296F29EC7EFB00489E62 /* SliderBuilder.swift */; };
@@ -32,6 +33,7 @@
 		759F517529E448D300FA3FE8 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F517429E448D300FA3FE8 /* BranchView.swift */; };
 		759F517929E448FC00FA3FE8 /* RadianTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F517829E448FC00FA3FE8 /* RadianTest.swift */; };
 		759F517B29E4491B00FA3FE8 /* EndPointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F517A29E4491B00FA3FE8 /* EndPointTest.swift */; };
+		75B86E7A29FFCCD50035BA4E /* BranchShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B86E7929FFCCD50035BA4E /* BranchShape.swift */; };
 		75E1281229EC0BFF0000DA6A /* HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E1281129EC0BFF0000DA6A /* HSB.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		750F962E29FA89B700598B96 /* TrunkDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkDistanceView.swift; sourceTree = "<group>"; };
 		7521296729EC7E4900489E62 /* TimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesView.swift; sourceTree = "<group>"; };
 		7521296D29EC7EA400489E62 /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
 		7521296F29EC7EFB00489E62 /* SliderBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderBuilder.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 		759F517429E448D300FA3FE8 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
 		759F517829E448FC00FA3FE8 /* RadianTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadianTest.swift; sourceTree = "<group>"; };
 		759F517A29E4491B00FA3FE8 /* EndPointTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointTest.swift; sourceTree = "<group>"; };
+		75B86E7929FFCCD50035BA4E /* BranchShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchShape.swift; sourceTree = "<group>"; };
 		75E1281129EC0BFF0000DA6A /* HSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +129,7 @@
 			children = (
 				7521296729EC7E4900489E62 /* TimesView.swift */,
 				7521296D29EC7EA400489E62 /* AppearanceView.swift */,
+				750F962E29FA89B700598B96 /* TrunkDistanceView.swift */,
 				7521297529EC811600489E62 /* ColorView.swift */,
 			);
 			path = areas;
@@ -218,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				759F516E29E4489B00FA3FE8 /* Branch.swift */,
+				75B86E7929FFCCD50035BA4E /* BranchShape.swift */,
 				759F517429E448D300FA3FE8 /* BranchView.swift */,
 				75E1281129EC0BFF0000DA6A /* HSB.swift */,
 			);
@@ -361,11 +367,13 @@
 				7521296E29EC7EA400489E62 /* AppearanceView.swift in Sources */,
 				759F517329E448BE00FA3FE8 /* MotionManager.swift in Sources */,
 				75E1281229EC0BFF0000DA6A /* HSB.swift in Sources */,
+				75B86E7A29FFCCD50035BA4E /* BranchShape.swift in Sources */,
 				759F516F29E4489B00FA3FE8 /* Branch.swift in Sources */,
 				7521297629EC811600489E62 /* ColorView.swift in Sources */,
 				7521297829EC81F600489E62 /* PlantView.swift in Sources */,
 				7581ED6E29EAD6FE0040425A /* SettingsView.swift in Sources */,
 				7521297029EC7EFB00489E62 /* SliderBuilder.swift in Sources */,
+				750F962F29FA89B700598B96 /* TrunkDistanceView.swift in Sources */,
 				759F514329E4484D00FA3FE8 /* PlantApp.swift in Sources */,
 				7521297229EC800300489E62 /* Modifier.swift in Sources */,
 				759F517129E448AE00FA3FE8 /* RadianCircle.swift in Sources */,

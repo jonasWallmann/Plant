@@ -24,3 +24,8 @@ enum RotationControlEnum: String, CaseIterable, Identifiable {
         return self
     }
 }
+
+enum DirectionEnum: String {
+    case left = "left"
+    case right = "right"
+}

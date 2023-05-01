@@ -41,6 +41,7 @@ struct SliderBuilder<Content: View>: View {
                 .selectAllUponEntering()
 
             Text(descriptionText)
+                .lineLimit(1)
         }
     }
 }

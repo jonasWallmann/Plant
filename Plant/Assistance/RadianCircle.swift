@@ -43,7 +43,7 @@ class RadianCircle {
     }
 
     public static func endPoint(from start: CGPoint, radian: CGFloat, length: CGFloat) -> CGPoint {
-        var radian: CGFloat = radian.truncatingRemainder(dividingBy: .pi * 2)
+        var radian: CGFloat = radian.truncatingRemainder(dividingBy: 2 * .pi)
 
         if radian < 0 {
             radian = .pi * 2 + radian
@@ -89,6 +89,13 @@ class RadianCircle {
             return endPoint(from: start, width: 0, height: -length)
         }
         return endPoint(from: start, width: 0, height: length)
+    }
+
+    public static func widthPoint(from point: CGPoint, width: CGFloat, direction: DirectionEnum, radian: CGFloat) -> CGPoint {
+        let adjustment = direction == .left ? CGFloat.pi / 2 : -CGFloat.pi / 2
+        let newRadian = radian + adjustment
+
+        return endPoint(from: point, radian: newRadian, length: width)
     }
 
     private static func endPoint(from start: CGPoint, width: CGFloat, height: CGFloat) -> CGPoint {

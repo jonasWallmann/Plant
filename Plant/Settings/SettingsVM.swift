@@ -18,6 +18,9 @@ class SettingsVM: ObservableObject {
     @Published public var lengthControl: LengthControlEnum = .absolute
     @Published public var rotationControl: RotationControlEnum = .absolute
 
+    // Length
+    @Published public var maxTrunkDistance: Double = 7
+
     // Color
     @Published public var startHue: Double = 220
     @Published public var startSaturation: Double = 330
@@ -35,7 +38,7 @@ class SettingsVM: ObservableObject {
         var array: [HSB] = []
         array.append(startHSB)
 
-        for _ in 0...6 {
+        for _ in 0...7 {
             let newHSB = array.last!.nextHSB(settings: self)
             array.append(newHSB)
         }

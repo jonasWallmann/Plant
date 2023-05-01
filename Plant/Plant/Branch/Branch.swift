@@ -7,29 +7,23 @@
 
 import SwiftUI
 
-struct Branch: Identifiable, Shape {
+struct Branch: Identifiable {
     public let id: UUID = .init()
     private let timeStamp: Date = .init()
 
     public let start: CGPoint
     public let end: CGPoint
 
+    public let startWidth: CGFloat
+    public let endWidth: CGFloat
+
     private let startColor: HSB
     private let endColor: HSB
 
     private let rotation: CGFloat
-    public let trunkDistance: Int
+    private let trunkDistance: Int
 
-    public var isOnEdge: Bool {
-        if trunkDistance > 6 { return true }
-
-        let sides = end.x <= 0 || end.x >= 1
-        let top = end.y <= 0
-
-        return sides || top
-    }
-
-    private var radian: CGFloat {
+    public var radian: CGFloat {
         RadianCircle.radian(form: start, to: end)
     }
 
@@ -49,47 +43,46 @@ struct Branch: Identifiable, Shape {
         )
     }
 
-    init(start: CGPoint, end: CGPoint, startColor: HSB, rotation: CGFloat, trunkDistance: Int, settings: SettingsVM) {
+    init(start: CGPoint, end: CGPoint, startWidth: CGFloat, startColor: HSB, endColor: HSB, rotation: CGFloat, trunkDistance: Int) {
         self.start = start
         self.end = end
+        self.startWidth = startWidth
+        self.endWidth = startWidth * 0.6
         self.startColor = startColor
-        self.endColor = startColor.nextHSB(settings: settings)
+        self.endColor = endColor
         self.rotation = rotation
         self.trunkDistance = trunkDistance
     }
 
     // MARK: Next Branch ------------------------------------------
 
-    public func nextBranch(rotation: CGFloat, length: CGFloat?, settings: SettingsVM) -> Branch {
-        let newLength = length ?? (0.16 - log(CGFloat(trunkDistance + 1)) / 17)
-        let newStart = end
-        let newRadian = radian - rotation
-        let newEnd = RadianCircle.endPoint(from: newStart, radian: newRadian, length: newLength)
-        let newStartColor = endColor
+    public func nextBranch(newRotation: CGFloat, newLength: CGFloat?, settings: SettingsVM) -> Branch {
+        let newLength = newLength ?? (0.16 - log(CGFloat(trunkDistance + 1)) / 17)
+        let newRadian = radian - newRotation
 
-        return Branch(start: newStart, end: newEnd, startColor: newStartColor, rotation: rotation, trunkDistance: trunkDistance + 1, settings: settings)
+        let newStart = end
+        let newEnd = RadianCircle.endPoint(from: newStart, radian: newRadian, length: newLength)
+
+        let newStartWidth = endWidth
+
+        let newStartColor = endColor
+        let newEndColor = startColor.nextHSB(settings: settings)
+
+        let newTrunkDistance = trunkDistance + 1
+
+        return Branch(start: newStart, end: newEnd, startWidth: newStartWidth, startColor: newStartColor, endColor: newEndColor, rotation: newRotation, trunkDistance: newTrunkDistance)
     }
 
     public func isGrowing(_ growTime: Double) -> Bool {
         abs(timeStamp.timeIntervalSinceNow) < growTime
     }
 
-    // MARK: Path -------------------------------------------
+    public func isOnEdge(_ maxTrunkDistance: Double) -> Bool {
+        if trunkDistance > Int(maxTrunkDistance) { return true }
 
-    public func path(in rect: CGRect) -> Path {
-        Path { path in
-            let startX = start.x * rect.maxX
-            let startY = (1 - start.y) * rect.maxY
-
-            let endX = end.x * rect.maxX
-            let endY = (1 - end.y) * rect.maxY
-
-            let startPoint = CGPoint(x: startX, y: startY)
-            let endPoint = CGPoint(x: endX, y: endY)
-
-            path.move(to: startPoint)
-            path.addLine(to: endPoint)
-        }
+        let sides = end.x <= 0 || end.x >= 1
+        let top = end.y <= 0
+        return sides || top
     }
 
     public func hasRotation(in newRotation: CGFloat) -> Bool {
@@ -100,5 +93,5 @@ struct Branch: Identifiable, Shape {
 }
 
 extension Branch {
-    static let mock = Branch(start: CGPoint(x: 0.5, y: 0), end: CGPoint(x: 0.5, y: 0.5), startColor: HSB.mock, rotation: 0, trunkDistance: 0, settings: SettingsVM())
+    static let mock = Branch(start: CGPoint(x: 0.5, y: 0), end: CGPoint(x: 0.5, y: 0.5), startWidth: 10, startColor: HSB.mock, endColor: HSB.mock.nextHSB(settings: SettingsVM()), rotation: 0, trunkDistance: 0)
 }

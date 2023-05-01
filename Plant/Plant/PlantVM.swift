@@ -30,10 +30,8 @@ class PlantVM: ObservableObject {
     public func addTrunk() {
         let start = CGPoint(x: 0.5, y: 0)
         let end = CGPoint(x: 0.5, y: 0.25)
-        let trunk = Branch(start: start, end: end, startColor: settings.startHSB, rotation: 0, trunkDistance: 0, settings: settings)
+        let trunk = Branch(start: start, end: end, startWidth: 20, startColor: settings.startHSB, endColor: settings.startHSB.nextHSB(settings: settings), rotation: 0, trunkDistance: 0)
         branches.append(trunk)
-
-        if addingBranches { return }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + settings.growTime) {
             self.addBranches()
@@ -47,12 +45,12 @@ class PlantVM: ObservableObject {
             addingBranches = false
             return
         }
-        
+
         let rotation = getRotation()
         let length = getLength()
 
         if let growingBranch = getGrowingBranch(at: rotation) {
-            let newBranch = growingBranch.nextBranch(rotation: rotation, length: length, settings: settings)
+            let newBranch = growingBranch.nextBranch(newRotation: rotation, newLength: length, settings: settings)
             branches.append(newBranch)
         }
 
@@ -65,7 +63,7 @@ class PlantVM: ObservableObject {
         var potentials: [Branch] = []
 
         for branch in branches {
-            if branch.isGrowing(settings.growTime) || branch.isOnEdge { continue }
+            if branch.isGrowing(settings.growTime) || branch.isOnEdge(settings.maxTrunkDistance) { continue }
 
             if !branches.contains(where: { $0.start == branch.end && $0.hasRotation(in: rotation) }) {
                 potentials.append(branch)

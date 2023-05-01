@@ -14,6 +14,7 @@ struct SettingsView: View {
         Form {
             TimesView()
             AppearanceView()
+            TrunkDistanceView()
             ColorView()
         }
         .navigationTitle("Settings")
