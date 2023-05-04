@@ -14,8 +14,9 @@ struct PlantApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView(settingsVM: settingsVM, plantVM: PlantVM(settingsVM: settingsVM))
-//                TestView()
+                GeometryReader { geo in
+                    ContentView(settingsVM: settingsVM, plantVM: PlantVM(settingsVM: settingsVM, geo: geo))
+                }
             }
         }
     }

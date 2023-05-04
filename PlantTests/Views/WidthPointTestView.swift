@@ -15,8 +15,8 @@ struct WidthPointTestView: View {
 }
 
 struct WidthPointTestShape: Shape {
-    let start = CGPoint(x: 0.3, y: 0.8)
-    let end = CGPoint(x: 0.7, y: 0.2)
+    let start = UnitPoint(x: 0.3, y: 0.8)
+    let end = UnitPoint(x: 0.7, y: 0.2)
 
     let startWidth: CGFloat = 50
     let endWidth: CGFloat = 50

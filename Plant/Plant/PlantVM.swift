@@ -12,6 +12,8 @@ class PlantVM: ObservableObject {
     @Published private(set) var opacity: Double = 1
 
     public let settings: SettingsVM
+
+    private let geo: GeometryProxy
     private let motionManager = MotionManager()
 
     private var addingBranches: Bool = true
@@ -20,17 +22,17 @@ class PlantVM: ObservableObject {
         settings.newBranchTime == 0 ? 0.0001 : settings.newBranchTime
     }
 
-    init(settingsVM: SettingsVM) {
+    init(settingsVM: SettingsVM, geo: GeometryProxy) {
+        self.geo = geo
         settings = settingsVM
-        addTrunk()
     }
 
     // MARK: Growing --------------------------------------------------
 
-    public func addTrunk() {
-        let start = CGPoint(x: 0.5, y: 1)
-        let end = CGPoint(x: 0.5, y: 0.75)
-        let trunk = Branch(start: start, end: end, startWidth: 20, startColor: settings.startHSB, endColor: settings.startHSB.nextHSB(settings: settings), rotation: 0, trunkDistance: 0, previousRadian: .pi / 2)
+    public func startGrowing() {
+        let start = UnitPoint(x: 0.5, y: 1)
+        let end = UnitPoint(x: 0.5, y: 0.75)
+        let trunk = Branch(start: start, end: end, startWidth: settings.getThickness(0), endWidth: settings.getThickness(1), startColor: settings.startHSB, endColor: settings.startHSB.nextHSB(settings: settings), rotation: 0, trunkDistance: 0, previousRadian: .pi / 2, geo: geo)
         branches.append(trunk)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + settings.growTime) {
@@ -45,7 +47,7 @@ class PlantVM: ObservableObject {
         let length = getLength()
 
         if let growingBranch = getGrowingBranch(at: rotation) {
-            let newBranch = growingBranch.nextBranch(newRotation: rotation, newLength: length, settings: settings)
+            let newBranch = growingBranch.nextBranch(newRotation: rotation, newLength: length, settings: settings, geo: geo)
             branches.append(newBranch)
         }
 
@@ -98,7 +100,7 @@ class PlantVM: ObservableObject {
             return nil
         case .relative:
             guard let pitch = motionManager.pitch else { return 0.2 }
-            return (1.6 - abs(pitch)) / 15
+            return (2 - abs(pitch)) / 15
         }
     }
 
@@ -111,7 +113,6 @@ class PlantVM: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.branches = []
             self.opacity = 1
-            self.addTrunk()
         }
     }
 }

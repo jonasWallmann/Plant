@@ -5,9 +5,13 @@
 //  Created by Jonas Wallmann on 10.04.23.
 //
 
-import Foundation
+import SwiftUI
 
 class RadianCircle {
+    static func radian(from start: UnitPoint, to end: UnitPoint) -> CGFloat {
+        return radian(from: CGPoint(start), to: CGPoint(end))
+    }
+
     static func radian(from start: CGPoint, to end: CGPoint) -> CGFloat {
         return absoluteRadian(from: start, to: end).truncatingRemainder(dividingBy: 2 * .pi)
     }
@@ -44,6 +48,11 @@ class RadianCircle {
             return .pi * 1.5
         }
         return .pi * 0.5
+    }
+
+    public static func endPoint(from start: UnitPoint, radian: CGFloat, length: CGFloat) -> UnitPoint {
+        let end = RadianCircle.endPoint(from: CGPoint(start), radian: radian, length: length)
+        return UnitPoint(x: end.x, y: end.y)
     }
 
     public static func endPoint(from start: CGPoint, radian: CGFloat, length: CGFloat) -> CGPoint {
@@ -102,8 +111,12 @@ class RadianCircle {
         return endPoint(from: point, radian: newRadian, length: width)
     }
 
-    public static func point(from point: CGPoint, in rect: CGRect) -> CGPoint {
+    public static func point(from point: UnitPoint, in rect: CGRect) -> CGPoint {
         return CGPoint(x: point.x * rect.maxX, y: point.y * rect.maxX)
+    }
+
+    public static func length(start: UnitPoint, end: UnitPoint, in rect: CGRect) -> CGFloat {
+        return length(start: CGPoint(start), end: CGPoint(end), in: rect)
     }
 
     public static func length(start: CGPoint, end: CGPoint, in rect: CGRect) -> CGFloat {
@@ -127,3 +140,10 @@ extension CGFloat {
         return (self * divisor).rounded() / divisor
     }
 }
+
+extension CGPoint {
+    init(_ point: UnitPoint) {
+        self.init(x: point.x, y: point.y)
+    }
+}
+

@@ -16,16 +16,13 @@ struct EndPointTestView: View {
                 EndPointTestShape(radian: $0)
                     .stroke(.indigo, style: StrokeStyle(lineWidth: 10))
             }
-            Circle()
-                .stroke(lineWidth: 3)
-                .frame(maxWidth: 400)
         }
     }
 }
 
 struct EndPointTestShape: Shape {
     let radian: CGFloat
-    let start = CGPoint(x: 0.5, y: 0.5)
+    let start = UnitPoint(x: 0.5, y: 0.5)
 
     func path(in rect: CGRect) -> Path {
         let startPoint = RadianCircle.point(from: start, in: rect)

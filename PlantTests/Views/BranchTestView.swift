@@ -16,8 +16,8 @@ struct BranchTestView: View {
 }
 
 struct BranchTestShape: Shape {
-    let start = CGPoint(x: 0.5, y: 1)
-    let end = CGPoint(x: 0.7, y: 0.4)
+    let start = UnitPoint(x: 0.5, y: 1)
+    let end = UnitPoint(x: 0.7, y: 0.4)
 
     let startWidth: CGFloat = 50
     let endWidth: CGFloat = 25
@@ -28,7 +28,7 @@ struct BranchTestShape: Shape {
         let startPoint = RadianCircle.point(from: start, in: rect)
         let endPoint = RadianCircle.point(from: end, in: rect)
 
-        let radian = RadianCircle.radian(from: start, to: end)
+        let radian = RadianCircle.radian(from: startPoint, to: endPoint)
 
         let leftStartPoint = RadianCircle.widthPoint(from: startPoint, width: startWidth, direction: .left, radian: previousRadian)
         let rightStartPoint = RadianCircle.widthPoint(from: startPoint, width: startWidth, direction: .right, radian: previousRadian)

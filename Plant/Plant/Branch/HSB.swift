@@ -15,7 +15,7 @@ struct HSB: Identifiable {
     let brightness: Double
 
     var color: Color? {
-        Color(hue: hue / 360, saturation: saturation / 360, brightness: brightness / 360)
+        Color(hue: hue / 360, saturation: saturation / 100, brightness: brightness / 100)
     }
 
     func nextHSB(settings: SettingsVM) -> HSB {
@@ -32,5 +32,5 @@ struct HSB: Identifiable {
 }
 
 extension HSB {
-    static let mock = HSB(hue: 220, saturation: 330, brightness: 200)
+    static let mock = HSB(hue: 220, saturation: 50, brightness: 80)
 }

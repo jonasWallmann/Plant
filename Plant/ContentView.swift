@@ -36,10 +36,15 @@ struct ContentView: View {
 
                 settingsVM.startColor
                     .frame(height: groundHeight(geo))
+                    .onTapGesture {
+                        if plantVM.branches.isEmpty {
+                            plantVM.startGrowing()
+                        } else {
+                            plantVM.cutTree()
+                        }
+                    }
             }
         }
-
-        .statusBarHidden()
     }
 
     func groundHeight(_ geo: GeometryProxy) -> CGFloat {
@@ -50,7 +55,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ContentView(settingsVM: SettingsVM(), plantVM: PlantVM(settingsVM: SettingsVM()))
+            GeometryReader { geo in
+                ContentView(settingsVM: SettingsVM(), plantVM: PlantVM(settingsVM: SettingsVM(), geo: geo))
+            }
         }
     }
 }

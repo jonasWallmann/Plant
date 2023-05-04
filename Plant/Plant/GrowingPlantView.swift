@@ -42,6 +42,8 @@ struct GrowingPlantView: View {
 
 struct GrowingPlantView_Previews: PreviewProvider {
     static var previews: some View {
-        GrowingPlantView(vm: PlantVM(settingsVM: SettingsVM()))
+        GeometryReader { geo in
+            GrowingPlantView(vm: PlantVM(settingsVM: SettingsVM(), geo: geo))
+        }
     }
 }

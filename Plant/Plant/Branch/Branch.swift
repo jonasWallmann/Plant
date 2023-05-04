@@ -11,8 +11,8 @@ struct Branch: Identifiable {
     public let id: UUID = .init()
     private let timeStamp: Date = .init()
 
-    public let start: CGPoint
-    public let end: CGPoint
+    public let start: UnitPoint
+    public let end: UnitPoint
 
     public let startWidth: CGFloat
     public let endWidth: CGFloat
@@ -22,6 +22,8 @@ struct Branch: Identifiable {
 
     private let rotation: CGFloat
     private let trunkDistance: Int
+
+    private let geo: GeometryProxy?
 
     public let previousRadian: CGFloat
 
@@ -42,42 +44,51 @@ struct Branch: Identifiable {
     }
 
     public var gradient: LinearGradient {
-        LinearGradient(
+        guard let geo = geo else { return LinearGradient(colors: colors, startPoint: .bottom, endPoint: .top) }
+
+        let ratio = geo.size.width / geo.size.height
+
+        let adjustedStartY = start.y * ratio
+        let adjustedEndY = end.y * ratio
+
+        return LinearGradient(
             gradient: Gradient(colors: colors),
-            startPoint: .init(x: start.x, y: start.y),
-            endPoint: .init(x: end.x, y: end.y)
+            startPoint: .init(x: start.x, y: adjustedStartY),
+            endPoint: .init(x: end.x, y: adjustedEndY)
         )
     }
 
-    init(start: CGPoint, end: CGPoint, startWidth: CGFloat, startColor: HSB, endColor: HSB, rotation: CGFloat, trunkDistance: Int, previousRadian: CGFloat) {
+    init(start: UnitPoint, end: UnitPoint, startWidth: CGFloat, endWidth: CGFloat, startColor: HSB, endColor: HSB, rotation: CGFloat, trunkDistance: Int, previousRadian: CGFloat, geo: GeometryProxy?) {
         self.start = start
         self.end = end
         self.startWidth = startWidth
-        self.endWidth = startWidth * 0.6
+        self.endWidth = endWidth
         self.startColor = startColor
         self.endColor = endColor
         self.rotation = rotation
         self.trunkDistance = trunkDistance
         self.previousRadian = previousRadian
+        self.geo = geo
     }
 
     // MARK: Next Branch ------------------------------------------
 
-    public func nextBranch(newRotation: CGFloat, newLength: CGFloat?, settings: SettingsVM) -> Branch {
+    public func nextBranch(newRotation: CGFloat, newLength: CGFloat?, settings: SettingsVM, geo: GeometryProxy) -> Branch {
         let newLength = newLength ?? (0.16 - log(CGFloat(trunkDistance + 1)) / 17)
         let newRadian = radian - newRotation
 
-        let newStart = CGPoint(x: end.x, y: end.y)
+        let newStart = UnitPoint(x: end.x, y: end.y)
         let newEnd = RadianCircle.endPoint(from: newStart, radian: newRadian, length: newLength)
 
-        let newStartWidth = endWidth
+        let newTrunkDistance = trunkDistance + 1
+
+        let newStartWidth = settings.getThickness(newTrunkDistance)
+        let newEndWidth = settings.getThickness(newTrunkDistance + 1)
 
         let newStartColor = endColor
         let newEndColor = newStartColor.nextHSB(settings: settings)
 
-        let newTrunkDistance = trunkDistance + 1
-
-        return Branch(start: newStart, end: newEnd, startWidth: newStartWidth, startColor: newStartColor, endColor: newEndColor, rotation: newRotation, trunkDistance: newTrunkDistance, previousRadian: radian)
+        return Branch(start: newStart, end: newEnd, startWidth: newStartWidth, endWidth: newEndWidth, startColor: newStartColor, endColor: newEndColor, rotation: newRotation, trunkDistance: newTrunkDistance, previousRadian: radian, geo: geo)
     }
 
     public func isGrowing(_ growTime: Double) -> Bool {
@@ -100,5 +111,5 @@ struct Branch: Identifiable {
 }
 
 extension Branch {
-    static let mock = Branch(start: CGPoint(x: 0.5, y: 1), end: CGPoint(x: 0.5, y: 0.5), startWidth: 10, startColor: HSB.mock, endColor: HSB.mock.nextHSB(settings: SettingsVM()), rotation: 0, trunkDistance: 0, previousRadian: .pi / 2)
+    static let mock = Branch(start: UnitPoint(x: 0.5, y: 1), end: UnitPoint(x: 0.5, y: 0.5), startWidth: 10, endWidth: 8, startColor: HSB.mock, endColor: HSB.mock.nextHSB(settings: SettingsVM()), rotation: 0, trunkDistance: 0, previousRadian: .pi / 2, geo: nil)
 }

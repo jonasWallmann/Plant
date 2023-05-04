@@ -22,13 +22,15 @@ class SettingsVM: ObservableObject {
     @Published public var maxTrunkDistance: Double = 7
 
     // Color
-    @Published public var startHue: Double = 220
-    @Published public var startSaturation: Double = 330
-    @Published public var startBrightness: Double = 200
+    @Published public var startHue: Double = 20
+    @Published public var startSaturation: Double = 34
+    @Published public var startBrightness: Double = 15
 
-    @Published public var hueChange: Double = -7
-    @Published public var saturationChange: Double = 0
-    @Published public var brightnessChange: Double = 0
+    @Published public var hueChange: Double = 7
+    @Published public var saturationChange: Double = 23
+    @Published public var brightnessChange: Double = 4
+
+    private let thicknesses: [CGFloat] = [20, 17, 7, 5, 3, 2, 2]
 
     public var startHSB: HSB {
         HSB(hue: startHue, saturation: startSaturation, brightness: startBrightness)
@@ -42,10 +44,16 @@ class SettingsVM: ObservableObject {
         var array: [HSB] = []
         array.append(startHSB)
 
-        for _ in 0...7 {
+        for _ in 0 ... 7 {
             let newHSB = array.last!.nextHSB(settings: self)
             array.append(newHSB)
         }
         return array
+    }
+
+    public func getThickness(_ trunkDistance: Int) -> CGFloat {
+        if trunkDistance >= thicknesses.count { return 1.7 }
+
+        return thicknesses[trunkDistance]
     }
 }

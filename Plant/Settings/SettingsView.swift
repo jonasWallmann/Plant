@@ -18,6 +18,7 @@ struct SettingsView: View {
             ColorView()
         }
         .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("Back") {
