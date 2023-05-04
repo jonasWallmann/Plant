@@ -14,9 +14,10 @@ class SettingsVM: ObservableObject {
     @Published public var growTime: Double = 2
     @Published public var newBranchTime: Double = 0.5
 
-    // Appearance
+    // Growing
     @Published public var lengthControl: LengthControlEnum = .absolute
     @Published public var rotationControl: RotationControlEnum = .absolute
+    @Published public var variableThickness: Bool = false
 
     // Length
     @Published public var maxTrunkDistance: Double = 7
@@ -52,6 +53,8 @@ class SettingsVM: ObservableObject {
     }
 
     public func getThickness(_ trunkDistance: Int) -> CGFloat {
+        if !variableThickness { return 2.5 }
+        
         if trunkDistance >= thicknesses.count { return 1.7 }
 
         return thicknesses[trunkDistance]

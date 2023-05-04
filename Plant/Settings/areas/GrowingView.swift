@@ -10,7 +10,7 @@ import SwiftUI
 struct GrowingView: View {
     @EnvironmentObject private var vm: SettingsVM
 
-    private let pickerWidth: CGFloat = 300
+    private let pickerWidth: CGFloat = 270
 
     var body: some View {
         Section("Growing") {
@@ -39,6 +39,8 @@ struct GrowingView: View {
                 .pickerStyle(.segmented)
                 .frame(maxWidth: pickerWidth)
             }
+
+            Toggle("Variable Thickness", isOn: $vm.variableThickness)
         }
     }
 }

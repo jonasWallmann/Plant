@@ -17,6 +17,7 @@ struct PlantApp: App {
                 GeometryReader { geo in
                     ContentView(settingsVM: settingsVM, plantVM: PlantVM(settingsVM: settingsVM, geo: geo))
                 }
+                .statusBarHidden()
             }
         }
     }

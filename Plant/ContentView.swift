@@ -12,7 +12,10 @@ struct ContentView: View {
     @StateObject var plantVM: PlantVM
 
     var groundColor: Color {
-        plantVM.groundColor ?? .black
+        if let groundColor = plantVM.groundColor {
+            return groundColor
+        }
+        return settingsVM.startHSB.color ?? .accentColor
     }
 
     var body: some View {
@@ -25,6 +28,7 @@ struct ContentView: View {
                             settingsVM.showingSettings = true
                         } label: {
                             Image(systemName: "gear")
+                                .foregroundColor(groundColor)
                         }
                     }
                     .sheet(isPresented: $settingsVM.showingSettings) {
