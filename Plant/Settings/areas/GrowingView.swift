@@ -22,7 +22,7 @@ struct GrowingView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .frame(maxWidth: 270)
+                .frame(maxWidth: 265)
             }
 
             HStack {
@@ -35,7 +35,7 @@ struct GrowingView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .frame(maxWidth: 270)
+                .frame(maxWidth: 265)
             }
         }
 

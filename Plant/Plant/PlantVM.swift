@@ -11,13 +11,13 @@ class PlantVM: ObservableObject {
     @Published private(set) var branches: [Branch] = []
     @Published private(set) var opacity: Double = 1
 
+    @Published private(set) var isGrowing: Bool = false
+
     public let settings: SettingsVM
     public var groundColor: Color?
 
     private let geo: GeometryProxy
     private let motionManager = MotionManager()
-
-    private var addingBranches: Bool = true
 
     private var usingNewBranchTime: Double {
         settings.newBranchTime == 0 ? 0.0001 : settings.newBranchTime
@@ -43,7 +43,7 @@ class PlantVM: ObservableObject {
     }
 
     private func addBranches() {
-        if !addingBranches { return }
+        if !isGrowing { return }
 
         let rotation = getRotation()
         let length = getLength()
@@ -58,13 +58,25 @@ class PlantVM: ObservableObject {
         }
     }
 
+    public func toggleGrowing() {
+        if isGrowing {
+            stopGrowing()
+        } else {
+            resumeGrowing()
+        }
+    }
+
     public func resumeGrowing() {
-        addingBranches = true
-        addBranches()
+        isGrowing = true
+        if branches.isEmpty {
+            startGrowing()
+        } else {
+            addBranches()
+        }
     }
 
     public func stopGrowing() {
-        addingBranches = false
+        isGrowing = false
     }
 
     private func getGrowingBranch(at rotation: CGFloat) -> Branch? {

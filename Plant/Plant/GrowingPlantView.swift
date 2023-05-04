@@ -15,23 +15,6 @@ struct GrowingPlantView: View {
     var body: some View {
         GeometryReader { geo in
             PlantView(branches: vm.branches, growTime: vm.settings.growTime)
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            gestureWidth = abs(gesture.translation.width)
-                        }
-                        .onEnded { gesture in
-                            let wideEnough = gestureWidth > 100
-                            let rightHeight = gesture.startLocation.y > geo.size.height * 0.8
-
-                            if wideEnough, rightHeight {
-                                vm.cutTree()
-                                gestureWidth = 0
-                            } else {
-                                gestureWidth = 0
-                            }
-                        }
-                )
         }
         .onShake {
             vm.cutTree()

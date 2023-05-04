@@ -23,21 +23,28 @@ struct ContentView: View {
             ZStack(alignment: .bottom) {
                 GrowingPlantView(vm: plantVM)
                     .toolbar {
-                        Button {
-                            plantVM.stopGrowing()
-                            settingsVM.showingSettings = true
-                        } label: {
-                            Image(systemName: "gear")
-                                .foregroundColor(groundColor)
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button {
+                                plantVM.toggleGrowing()
+                            } label: {
+                                Image(systemName: plantVM.isGrowing ? "stop.fill" : "play.fill")
+                                    .foregroundColor(groundColor)
+                            }
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                plantVM.stopGrowing()
+                                settingsVM.showingSettings = true
+                            } label: {
+                                Image(systemName: "gear")
+                                    .foregroundColor(groundColor)
+                            }
                         }
                     }
                     .sheet(isPresented: $settingsVM.showingSettings) {
                         NavigationStack {
                             SettingsView()
                                 .environmentObject(settingsVM)
-                                .onDisappear {
-                                    plantVM.resumeGrowing()
-                                }
 //                                .presentationBackground(Material.thin)
                         }
                     }
