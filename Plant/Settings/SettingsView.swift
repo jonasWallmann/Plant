@@ -20,14 +20,17 @@ struct SettingsView: View {
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("Back") {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Done") {
                     vm.showingSettings = false
                 }
+                .fontWeight(.medium)
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Reset") {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
                     vm.reset()
+                } label: {
+                    Image(systemName: "eraser")
                 }
             }
         }

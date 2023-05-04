@@ -17,12 +17,12 @@ struct FormView: View {
                 Spacer()
 
                 Picker("Height", selection: $vm.maxTrunkDistance) {
-                    ForEach(6..<11) { height in
+                    ForEach(4..<9) { height in
                         Text("\(height)").tag(Double(height))
                     }
                 }
                 .pickerStyle(.segmented)
-                .frame(maxWidth: 270)
+                .frame(maxWidth: 265)
             }
             HStack {
                 Text("Thickness")
@@ -34,7 +34,7 @@ struct FormView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .frame(maxWidth: 270)
+                .frame(maxWidth: 265)
             }
         }
     }
