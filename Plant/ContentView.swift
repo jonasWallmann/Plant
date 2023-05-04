@@ -11,6 +11,10 @@ struct ContentView: View {
     @StateObject var settingsVM: SettingsVM
     @StateObject var plantVM: PlantVM
 
+    var groundColor: Color {
+        plantVM.groundColor ?? .black
+    }
+
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
@@ -34,7 +38,7 @@ struct ContentView: View {
                         }
                     }
 
-                settingsVM.startColor
+                groundColor
                     .frame(height: groundHeight(geo))
                     .onTapGesture {
                         if plantVM.branches.isEmpty {

@@ -31,6 +31,12 @@ struct HSB: Identifiable {
     }
 }
 
+struct HSB_Previews: PreviewProvider {
+    static var previews: some View {
+        HSB.mock.color?.ignoresSafeArea()
+    }
+}
+
 extension HSB {
-    static let mock = HSB(hue: 220, saturation: 50, brightness: 80)
+    static let mock = HSB(hue: 20, saturation: 50, brightness: 90)
 }

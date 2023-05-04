@@ -13,7 +13,7 @@ struct SettingsView: View {
     var body: some View {
         Form {
             TimesView()
-            AppearanceView()
+            GrowingView()
             TrunkDistanceView()
             ColorView()
         }

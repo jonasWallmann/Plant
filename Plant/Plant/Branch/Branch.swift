@@ -111,5 +111,5 @@ struct Branch: Identifiable {
 }
 
 extension Branch {
-    static let mock = Branch(start: UnitPoint(x: 0.5, y: 1), end: UnitPoint(x: 0.5, y: 0.5), startWidth: 10, endWidth: 8, startColor: HSB.mock, endColor: HSB.mock.nextHSB(settings: SettingsVM()), rotation: 0, trunkDistance: 0, previousRadian: .pi / 2, geo: nil)
+    static let mock = Branch(start: UnitPoint(x: 0.5, y: 1), end: UnitPoint(x: 0.5, y: 0.5), startWidth: 15, endWidth: 10, startColor: HSB.mock, endColor: HSB.mock.nextHSB(settings: SettingsVM()), rotation: 0, trunkDistance: 0, previousRadian: .pi / 2, geo: nil)
 }

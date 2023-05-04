@@ -12,7 +12,7 @@ class SettingsVM: ObservableObject {
 
     // Time
     @Published public var growTime: Double = 2
-    @Published public var newBranchTime: Double = 0.2
+    @Published public var newBranchTime: Double = 0.5
 
     // Appearance
     @Published public var lengthControl: LengthControlEnum = .absolute
@@ -23,8 +23,8 @@ class SettingsVM: ObservableObject {
 
     // Color
     @Published public var startHue: Double = 20
-    @Published public var startSaturation: Double = 34
-    @Published public var startBrightness: Double = 15
+    @Published public var startSaturation: Double = 50
+    @Published public var startBrightness: Double = 47
 
     @Published public var hueChange: Double = 7
     @Published public var saturationChange: Double = 23

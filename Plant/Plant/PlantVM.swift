@@ -12,6 +12,7 @@ class PlantVM: ObservableObject {
     @Published private(set) var opacity: Double = 1
 
     public let settings: SettingsVM
+    public var groundColor: Color?
 
     private let geo: GeometryProxy
     private let motionManager = MotionManager()
@@ -30,6 +31,7 @@ class PlantVM: ObservableObject {
     // MARK: Growing --------------------------------------------------
 
     public func startGrowing() {
+        groundColor = settings.startColor
         let start = UnitPoint(x: 0.5, y: 1)
         let end = UnitPoint(x: 0.5, y: 0.75)
         let trunk = Branch(start: start, end: end, startWidth: settings.getThickness(0), endWidth: settings.getThickness(1), startColor: settings.startHSB, endColor: settings.startHSB.nextHSB(settings: settings), rotation: 0, trunkDistance: 0, previousRadian: .pi / 2, geo: geo)
@@ -111,6 +113,7 @@ class PlantVM: ObservableObject {
             opacity = 0
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.groundColor = self.settings.startColor
             self.branches = []
             self.opacity = 1
         }
