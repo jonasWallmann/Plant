@@ -31,6 +31,7 @@ class PlantVM: ObservableObject {
     // MARK: Growing --------------------------------------------------
 
     public func startGrowing() {
+        isGrowing = true
         groundColor = settings.startColor
         let start = UnitPoint(x: 0.5, y: 1)
         let end = UnitPoint(x: 0.5, y: 0.75)
@@ -125,6 +126,7 @@ class PlantVM: ObservableObject {
             opacity = 0
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.isGrowing = false
             self.groundColor = self.settings.startColor
             self.branches = []
             self.opacity = 1

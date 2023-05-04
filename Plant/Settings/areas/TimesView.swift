@@ -11,7 +11,7 @@ struct TimesView: View {
     @EnvironmentObject private var vm: SettingsVM
 
     var body: some View {
-        Section("Times") {
+        Section("Time") {
             SliderBuilder(description: "Grow", descriptionText: "sec", value: $vm.growTime) {
                 Slider(value: $vm.growTime, in: 0 ... 10, step: 0.5)
             }

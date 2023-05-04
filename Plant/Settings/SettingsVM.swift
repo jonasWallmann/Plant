@@ -72,7 +72,7 @@ class SettingsVM: ObservableObject {
     }
 
     public func getThickness(_ trunkDistance: Int) -> CGFloat {
-        if !(thickness == .consistent) { return 2.5 }
+        if thickness == .consistent { return 2.5 }
         
         if trunkDistance >= thicknesses.count { return 1.7 }
 
