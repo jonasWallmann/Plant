@@ -14,7 +14,7 @@ struct SettingsView: View {
         Form {
             TimesView()
             GrowingView()
-            TrunkDistanceView()
+            FormView()
             ColorView()
         }
         .navigationTitle("Settings")
@@ -23,6 +23,11 @@ struct SettingsView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("Back") {
                     vm.showingSettings = false
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Reset") {
+                    vm.reset()
                 }
             }
         }

@@ -28,10 +28,10 @@ struct ColorView: View {
                 Slider(value: $vm.startHue, in: 0 ... 360, step: 1)
             }
             SliderBuilder(description: "Saturation", descWidth: desWidth, descriptionText: "%", value: $vm.startSaturation) {
-                Slider(value: $vm.startSaturation, in: 0 ... 360, step: 1)
+                Slider(value: $vm.startSaturation, in: 0 ... 100, step: 1)
             }
             SliderBuilder(description: "Brightness", descWidth: desWidth, descriptionText: "%", value: $vm.startBrightness) {
-                Slider(value: $vm.startBrightness, in: 0 ... 360, step: 1)
+                Slider(value: $vm.startBrightness, in: 0 ... 100, step: 1)
             }
         }
         Section("New Branch Color Adjustment") {
@@ -39,10 +39,10 @@ struct ColorView: View {
                 Slider(value: $vm.hueChange, in: -180 ... 180, step: 1)
             }
             SliderBuilder(description: "Saturation", descWidth: desWidth, descriptionText: "%", value: $vm.saturationChange) {
-                Slider(value: $vm.saturationChange, in: -180 ... 180, step: 1)
+                Slider(value: $vm.saturationChange, in: -25 ... 25, step: 1)
             }
             SliderBuilder(description: "Brightness", descWidth: desWidth, descriptionText: "%", value: $vm.brightnessChange) {
-                Slider(value: $vm.brightnessChange, in: -180 ... 180, step: 1)
+                Slider(value: $vm.brightnessChange, in: -25 ... 25, step: 1)
             }
         }
     }

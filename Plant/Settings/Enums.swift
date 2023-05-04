@@ -12,7 +12,7 @@ enum LengthControlEnum: String, CaseIterable, Identifiable {
     case relative = "Relative"
 
     var id: Self {
-        return self
+        self
     }
 }
 
@@ -21,7 +21,16 @@ enum RotationControlEnum: String, CaseIterable, Identifiable {
     case relative = "Relative"
 
     var id: Self {
-        return self
+        self
+    }
+}
+
+enum ThicknessControlEnum: String, CaseIterable, Identifiable {
+    case consistent = "Consistent"
+    case natural = "Natural"
+
+    var id: Self {
+        self
     }
 }
 

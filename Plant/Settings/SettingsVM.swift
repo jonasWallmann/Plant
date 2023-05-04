@@ -17,7 +17,7 @@ class SettingsVM: ObservableObject {
     // Growing
     @Published public var lengthControl: LengthControlEnum = .absolute
     @Published public var rotationControl: RotationControlEnum = .absolute
-    @Published public var variableThickness: Bool = false
+    @Published public var thickness: ThicknessControlEnum = .consistent
 
     // Length
     @Published public var maxTrunkDistance: Double = 7
@@ -32,6 +32,25 @@ class SettingsVM: ObservableObject {
     @Published public var brightnessChange: Double = 4
 
     private let thicknesses: [CGFloat] = [20, 17, 7, 5, 3, 2, 2]
+
+    public func reset() {
+        growTime = 2
+        newBranchTime = 0.5
+
+        lengthControl = .absolute
+        rotationControl = .absolute
+        thickness = .consistent
+
+        maxTrunkDistance = 7
+
+        startHue = 20
+        startSaturation = 50
+        startBrightness = 47
+
+        hueChange = 7
+        saturationChange = 23
+        brightnessChange = 4
+    }
 
     public var startHSB: HSB {
         HSB(hue: startHue, saturation: startSaturation, brightness: startBrightness)
@@ -53,7 +72,7 @@ class SettingsVM: ObservableObject {
     }
 
     public func getThickness(_ trunkDistance: Int) -> CGFloat {
-        if !variableThickness { return 2.5 }
+        if !(thickness == .consistent) { return 2.5 }
         
         if trunkDistance >= thicknesses.count { return 1.7 }
 

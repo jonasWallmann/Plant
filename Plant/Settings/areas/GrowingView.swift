@@ -10,8 +10,6 @@ import SwiftUI
 struct GrowingView: View {
     @EnvironmentObject private var vm: SettingsVM
 
-    private let pickerWidth: CGFloat = 270
-
     var body: some View {
         Section("Growing") {
             HStack {
@@ -24,7 +22,7 @@ struct GrowingView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .frame(maxWidth: pickerWidth)
+                .frame(maxWidth: 270)
             }
 
             HStack {
@@ -37,15 +35,14 @@ struct GrowingView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .frame(maxWidth: pickerWidth)
+                .frame(maxWidth: 270)
             }
-
-            Toggle("Variable Thickness", isOn: $vm.variableThickness)
         }
+
     }
 }
 
-struct AppearanceView_Previews: PreviewProvider {
+struct GrowingView_Previews: PreviewProvider {
     static var previews: some View {
         Form {
             GrowingView()
