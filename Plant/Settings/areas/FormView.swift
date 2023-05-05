@@ -17,7 +17,7 @@ struct FormView: View {
                 Spacer()
 
                 Picker("Height", selection: $vm.maxTrunkDistance) {
-                    ForEach(4..<9) { height in
+                    ForEach(5 ..< 11) { height in
                         Text("\(height)").tag(Double(height))
                     }
                 }
@@ -45,6 +45,6 @@ struct FormView_Previews: PreviewProvider {
         List {
             FormView()
         }
-            .environmentObject(SettingsVM())
+        .environmentObject(SettingsVM())
     }
 }

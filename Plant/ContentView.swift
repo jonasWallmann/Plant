@@ -29,6 +29,8 @@ struct ContentView: View {
                             } label: {
                                 Image(systemName: plantVM.isGrowing ? "stop.fill" : "play.fill")
                                     .foregroundColor(groundColor)
+                                    .padding(.vertical)
+                                    .padding(.trailing, 40)
                             }
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
@@ -38,6 +40,8 @@ struct ContentView: View {
                             } label: {
                                 Image(systemName: "gear")
                                     .foregroundColor(groundColor)
+                                    .padding(.vertical)
+                                    .padding(.leading, 40)
                             }
                         }
                     }

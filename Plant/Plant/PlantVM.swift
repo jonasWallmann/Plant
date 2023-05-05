@@ -35,7 +35,7 @@ class PlantVM: ObservableObject {
         groundColor = settings.startColor
         let start = UnitPoint(x: 0.5, y: 1)
         let end = UnitPoint(x: 0.5, y: 0.75)
-        let trunk = Branch(start: start, end: end, startWidth: settings.getThickness(0), endWidth: settings.getThickness(1), startColor: settings.startHSB, endColor: settings.startHSB.nextHSB(settings: settings), rotation: 0, trunkDistance: 0, previousRadian: .pi / 2, geo: geo)
+        let trunk = Branch(start: start, end: end, startWidth: settings.getThickness(1), endWidth: settings.getThickness(2), startColor: settings.startHSB, endColor: settings.startHSB.nextHSB(settings: settings), rotation: 0, trunkDistance: 1, previousRadian: .pi / 2, geo: geo)
         branches.append(trunk)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + settings.growTime) {

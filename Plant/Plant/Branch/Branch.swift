@@ -96,7 +96,7 @@ struct Branch: Identifiable {
     }
 
     public func isOnEdge(_ maxTrunkDistance: Double) -> Bool {
-        if trunkDistance > Int(maxTrunkDistance) { return true }
+        if trunkDistance >= Int(maxTrunkDistance) { return true }
 
         let sides = end.x <= 0 || end.x >= 1
         let top = end.y <= 0

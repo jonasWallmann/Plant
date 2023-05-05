@@ -11,8 +11,8 @@ class SettingsVM: ObservableObject {
     @Published public var showingSettings: Bool = false
 
     // Time
-    @Published public var growTime: Double = 2
-    @Published public var newBranchTime: Double = 0.5
+    @Published public var growTime: Double = 1.5
+    @Published public var newBranchTime: Double = 0.3
 
     // Growing
     @Published public var lengthControl: LengthControlEnum = .absolute
@@ -20,7 +20,7 @@ class SettingsVM: ObservableObject {
     @Published public var thickness: ThicknessControlEnum = .consistent
 
     // Length
-    @Published public var maxTrunkDistance: Double = 7
+    @Published public var maxTrunkDistance: Double = 9
 
     // Color
     @Published public var startHue: Double = 20
@@ -64,7 +64,7 @@ class SettingsVM: ObservableObject {
         var array: [HSB] = []
         array.append(startHSB)
 
-        for _ in 0 ... 7 {
+        for _ in 0 ..< Int(maxTrunkDistance) {
             let newHSB = array.last!.nextHSB(settings: self)
             array.append(newHSB)
         }
@@ -73,9 +73,9 @@ class SettingsVM: ObservableObject {
 
     public func getThickness(_ trunkDistance: Int) -> CGFloat {
         if thickness == .consistent { return 2.5 }
-        
-        if trunkDistance >= thicknesses.count { return 1.7 }
 
-        return thicknesses[trunkDistance]
+        if trunkDistance > thicknesses.count { return 1.7 }
+
+        return thicknesses[trunkDistance - 1]
     }
 }
