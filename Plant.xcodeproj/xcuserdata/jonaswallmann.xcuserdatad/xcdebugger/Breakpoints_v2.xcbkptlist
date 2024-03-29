@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "3F6FF666-8066-40A5-8211-DCA4B1C5D222"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1AFA1462-8964-4D75-B3E6-9FDB9F89E9FA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Plant/ExportVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "getVectorImage(plantVM:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1AFA1462-8964-4D75-B3E6-9FDB9F89E9FA - bd5f790445dd563b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Plant.ExportVM.getVectorImage(branches: Swift.Array&lt;Plant.Branch&gt;, width: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat) -&gt; Foundation.URL"
+                  moduleName = "Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonaswallmann/Desktop/SS2023/Plant/Plant/ExportVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17">
+               </Location>
+               <Location
+                  uuid = "1AFA1462-8964-4D75-B3E6-9FDB9F89E9FA - 950cc9bddf0a69ea"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Plant.ExportVM.getVectorImage(branches: Swift.Array&lt;Plant.Branch&gt;) -&gt; Foundation.URL"
+                  moduleName = "Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonaswallmann/Desktop/SS2023/Plant/Plant/ExportVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9CB4F62-C0F1-4FC8-9E2C-B469252DC8D9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Plant/ExportVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "getVectorImage(plantVM:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D9CB4F62-C0F1-4FC8-9E2C-B469252DC8D9 - bd5f790445dd563b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Plant.ExportVM.getVectorImage(branches: Swift.Array&lt;Plant.Branch&gt;, width: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat) -&gt; Foundation.URL"
+                  moduleName = "Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonaswallmann/Desktop/SS2023/Plant/Plant/ExportVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17">
+               </Location>
+               <Location
+                  uuid = "D9CB4F62-C0F1-4FC8-9E2C-B469252DC8D9 - 950cc9bddf0a69ea"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Plant.ExportVM.getVectorImage(branches: Swift.Array&lt;Plant.Branch&gt;) -&gt; Foundation.URL"
+                  moduleName = "Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonaswallmann/Desktop/SS2023/Plant/Plant/ExportVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

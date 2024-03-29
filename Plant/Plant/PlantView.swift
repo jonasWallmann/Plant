@@ -23,6 +23,7 @@ struct PlantView: View {
                 BranchView(branch: branch, growTime: growTime)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

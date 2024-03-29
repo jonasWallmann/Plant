@@ -12,7 +12,7 @@ class SettingsVM: ObservableObject {
 
     // Time
     @Published public var growTime: Double = 1.5
-    @Published public var newBranchTime: Double = 0.3
+    @Published public var newBranchTime: Double = 0.25
 
     // Growing
     @Published public var lengthControl: LengthControlEnum = .absolute
@@ -34,14 +34,14 @@ class SettingsVM: ObservableObject {
     private let thicknesses: [CGFloat] = [20, 17, 7, 5, 3, 2, 2]
 
     public func reset() {
-        growTime = 2
-        newBranchTime = 0.5
+        growTime = 1.5
+        newBranchTime = 0.25
 
         lengthControl = .absolute
         rotationControl = .absolute
         thickness = .consistent
 
-        maxTrunkDistance = 7
+        maxTrunkDistance = 9
 
         startHue = 20
         startSaturation = 50

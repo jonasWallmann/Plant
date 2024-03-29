@@ -13,9 +13,9 @@ struct GrowingPlantView: View {
     @State private var gestureWidth: CGFloat = 0
 
     var body: some View {
-        GeometryReader { geo in
+//        GeometryReader { geo in
             PlantView(branches: vm.branches, growTime: vm.settings.growTime)
-        }
+//        }
         .onShake {
             vm.cutTree()
         }

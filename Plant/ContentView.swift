@@ -11,6 +11,8 @@ struct ContentView: View {
     @StateObject var settingsVM: SettingsVM
     @StateObject var plantVM: PlantVM
 
+    @State private var exportVM = ExportVM()
+
     var groundColor: Color {
         if let groundColor = plantVM.groundColor {
             return groundColor
@@ -33,7 +35,10 @@ struct ContentView: View {
                                     .padding(.trailing, 40)
                             }
                         }
-                        ToolbarItem(placement: .navigationBarTrailing) {
+
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            ShareLink("Export", item: exportVM.getVectorImage(plantVM: plantVM))
+
                             Button {
                                 plantVM.stopGrowing()
                                 settingsVM.showingSettings = true

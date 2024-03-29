@@ -16,6 +16,9 @@
 		7521297629EC811600489E62 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521297529EC811600489E62 /* ColorView.swift */; };
 		7521297829EC81F600489E62 /* PlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521297729EC81F600489E62 /* PlantView.swift */; };
 		7521297A29EC82D300489E62 /* GrowingPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521297929EC82D300489E62 /* GrowingPlantView.swift */; };
+		754503432A2D4126003FFABF /* ExportVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754503422A2D4126003FFABF /* ExportVM.swift */; };
+		755817B92A06569400AA0E76 /* BranchLengthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755817B82A06569400AA0E76 /* BranchLengthView.swift */; };
+		755817BC2A0656F100AA0E76 /* BranchLengthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755817BB2A0656F100AA0E76 /* BranchLengthVM.swift */; };
 		7581ED6A29EABA4B0040425A /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6929EABA4B0040425A /* Shake.swift */; };
 		7581ED6C29EAC1350040425A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6B29EAC1350040425A /* Enums.swift */; };
 		7581ED6E29EAD6FE0040425A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7581ED6D29EAD6FE0040425A /* SettingsView.swift */; };
@@ -69,6 +72,9 @@
 		7521297529EC811600489E62 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		7521297729EC81F600489E62 /* PlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantView.swift; sourceTree = "<group>"; };
 		7521297929EC82D300489E62 /* GrowingPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingPlantView.swift; sourceTree = "<group>"; };
+		754503422A2D4126003FFABF /* ExportVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportVM.swift; sourceTree = "<group>"; };
+		755817B82A06569400AA0E76 /* BranchLengthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchLengthView.swift; sourceTree = "<group>"; };
+		755817BB2A0656F100AA0E76 /* BranchLengthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchLengthVM.swift; sourceTree = "<group>"; };
 		7581ED6929EABA4B0040425A /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
 		7581ED6B29EAC1350040425A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7581ED6D29EAD6FE0040425A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -130,6 +136,7 @@
 				7581ED6D29EAD6FE0040425A /* SettingsView.swift */,
 				7581ED6B29EAC1350040425A /* Enums.swift */,
 				7521297B29EC832A00489E62 /* areas */,
+				755817BA2A0656D500AA0E76 /* length */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -154,6 +161,15 @@
 				759F517D29E4680300FA3FE8 /* Branch */,
 			);
 			path = Plant;
+			sourceTree = "<group>";
+		};
+		755817BA2A0656D500AA0E76 /* length */ = {
+			isa = PBXGroup;
+			children = (
+				755817BB2A0656F100AA0E76 /* BranchLengthVM.swift */,
+				755817B82A06569400AA0E76 /* BranchLengthView.swift */,
+			);
+			path = length;
 			sourceTree = "<group>";
 		};
 		759D004E2A0062700003EA21 /* Logic */ = {
@@ -203,6 +219,7 @@
 				759F514629E4484D00FA3FE8 /* Assets.xcassets */,
 				759F514229E4484D00FA3FE8 /* PlantApp.swift */,
 				759F514429E4484D00FA3FE8 /* ContentView.swift */,
+				754503422A2D4126003FFABF /* ExportVM.swift */,
 				7521296629EC7E3300489E62 /* Settings */,
 				7521297C29EC847B00489E62 /* Plant */,
 				759F517C29E467F700FA3FE8 /* Assistance */,
@@ -392,6 +409,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				759F514529E4484D00FA3FE8 /* ContentView.swift in Sources */,
+				755817BC2A0656F100AA0E76 /* BranchLengthVM.swift in Sources */,
+				755817B92A06569400AA0E76 /* BranchLengthView.swift in Sources */,
 				7521297A29EC82D300489E62 /* GrowingPlantView.swift in Sources */,
 				758646C729FFFBCD0012F285 /* BranchTestView.swift in Sources */,
 				759F517529E448D300FA3FE8 /* BranchView.swift in Sources */,
@@ -411,6 +430,7 @@
 				759F514329E4484D00FA3FE8 /* PlantApp.swift in Sources */,
 				7521297229EC800300489E62 /* Modifier.swift in Sources */,
 				759F517129E448AE00FA3FE8 /* RadianCircle.swift in Sources */,
+				754503432A2D4126003FFABF /* ExportVM.swift in Sources */,
 				7581ED6C29EAC1350040425A /* Enums.swift in Sources */,
 				759F516D29E4488000FA3FE8 /* PlantVM.swift in Sources */,
 				759D00492A004A7F0003EA21 /* EndPointTestView.swift in Sources */,
